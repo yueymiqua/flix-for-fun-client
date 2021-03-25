@@ -1,5 +1,10 @@
-.my-flix {
+.app-container {
   color: steelblue;
+}
+
+.movie-poster {
+  width: 300px;
+  height: auto;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */

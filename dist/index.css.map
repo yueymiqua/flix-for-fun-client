@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.scss"],"names":[],"mappings":"AAEA;EACI,OAHI","file":"index.css","sourceRoot":"..\\src","sourcesContent":["$color: steelblue;\r\n\r\n.app-container {\r\n    color: $color;\r\n}"]}
