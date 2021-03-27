@@ -15,4 +15,15 @@
 .movie-genre,
 .movie-director {
     font-size: 25px;
+    max-width: 50vw;
+    margin: 0 auto;
+}
+
+.movie-description {
+    color: #cc0066;
+}
+
+.back-button {
+    padding: 10px;
+    font-size: 20px;
 }

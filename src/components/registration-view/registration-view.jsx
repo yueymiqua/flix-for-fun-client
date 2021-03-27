@@ -15,7 +15,7 @@ export function RegistrationView(props) {
     }
     
     return (
-        <form>
+        <form className="registration-form">
           <h1>Registration Page</h1>
           <label>
             Username:
@@ -39,7 +39,7 @@ export function RegistrationView(props) {
           <br></br>
           <button type="submit" onClick={handleSubmit}>Submit</button>
           <br></br>
-          <button type="button" onClick={() => props.onClick()}>Go to Login Page</button>
+          <span className="registration-span">Existing User?</span><button type="button" onClick={() => props.onClick()}>Go to Login Page</button>
         </form>
     );
 }

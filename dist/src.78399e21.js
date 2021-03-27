@@ -32664,7 +32664,9 @@ function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  return _react.default.createElement("form", null, _react.default.createElement("h1", null, "User Login Page"), _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
+  return _react.default.createElement("form", {
+    className: "login-form"
+  }, _react.default.createElement("h1", null, "User Login Page"), _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
     type: "text",
     value: username,
     onChange: function onChange(e) {
@@ -32679,7 +32681,9 @@ function LoginView(props) {
   })), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"), _react.default.createElement("br", null), _react.default.createElement("button", {
+  }, "Submit"), _react.default.createElement("br", null), _react.default.createElement("span", {
+    className: "login-span"
+  }, "New User?"), _react.default.createElement("button", {
     type: "button",
     onClick: function onClick() {
       return props.onClick();
@@ -32746,7 +32750,9 @@ function RegistrationView(props) {
     props.onLoggedIn(username);
   };
 
-  return _react.default.createElement("form", null, _react.default.createElement("h1", null, "Registration Page"), _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
+  return _react.default.createElement("form", {
+    className: "registration-form"
+  }, _react.default.createElement("h1", null, "Registration Page"), _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
     type: "text",
     value: username,
     onChange: function onChange(e) {
@@ -32773,7 +32779,9 @@ function RegistrationView(props) {
   })), _react.default.createElement("br", null), _react.default.createElement("button", {
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"), _react.default.createElement("br", null), _react.default.createElement("button", {
+  }, "Submit"), _react.default.createElement("br", null), _react.default.createElement("span", {
+    className: "registration-span"
+  }, "Existing User?"), _react.default.createElement("button", {
     type: "button",
     onClick: function onClick() {
       return props.onClick();
@@ -32973,6 +32981,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement("button", {
+        className: "back-button",
         type: "button",
         onClick: function onClick() {
           return _onClick();
@@ -33279,7 +33288,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63203" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51180" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
