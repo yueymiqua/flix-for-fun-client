@@ -1,10 +1,39 @@
-.app-container {
-  color: steelblue;
+form {
+  text-align: center;
+}
+.movie-card {
+  font-size: 25px;
+  margin: 15px;
+  background-color: beige;
+  max-width: 25vw;
+  cursor: pointer;
+  border-color: midnightblue;
+  border-style: double;
+}
+.movie-view {
+  text-align: center;
 }
 
 .movie-poster {
-  width: 300px;
+  width: 400px;
   height: auto;
+}
+
+.image-poster {
+  font-size: 40px;
+}
+
+.movie-description,
+.movie-genre,
+.movie-director {
+  font-size: 25px;
+}
+.main-view {
+  font-size: 40px;
+  text-align: center;
+}
+.app-container {
+  color: steelblue;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */
