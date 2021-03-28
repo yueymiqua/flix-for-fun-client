@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import './movie-view.scss'
 
 export class MovieView extends React.Component{
     Constructor(){
@@ -30,8 +33,27 @@ export class MovieView extends React.Component{
                     <span className="label">Director: </span>
                     <span className="value">{movie.Director.Name}</span>
                 </div>
-                <button type="button" onClick={() => onClick()}>Back</button>
+                <button className="back-button" type="button" onClick={() => onClick()}>Back</button>
             </div>
         );
     }
 }
+
+MovieView.propTypes = {
+    movie: PropTypes.shape({
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string.isRequired,
+        Genre: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Description: PropTypes.string.isRequired
+        }),
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Bio: PropTypes.string.isRequired,
+            Birth: PropTypes.string.isRequired,
+            Death: PropTypes.string
+        })
+    }).isRequired,
+    onClick: PropTypes.func.isRequired
+};
