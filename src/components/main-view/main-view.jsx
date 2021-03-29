@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import Row from 'react-bootstrap/Row'; // Row from React-Bootstrap
+import Col from 'react-bootstrap/Col'; // Column from React-Bootstrap
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -66,29 +68,36 @@ export class MainView extends React.Component {
         });
     }
   
-    render() {
-      // If the state isn't initialized, this will throw on runtime
-      // before the data is initially loaded
-      const { movies, selectedMovie, user, toLogIn } = this.state;
+  render() {
+    // If the state isn't initialized, this will throw on runtime
+    // before the data is initially loaded
+    const { movies, selectedMovie, user, toLogIn } = this.state;
 
-      // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
-      if (!user && toLogIn) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onClick={() => this.onGoToRegisterButtonClick()}/>
+    // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
+    if (!user && toLogIn) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} onClick={() => this.onGoToRegisterButtonClick()}/>
 
-      if (!user && !toLogIn) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} onClick={() => this.onGoToLoginButtonClick()}/>
-  
-      // Before the movies have been loaded
-      if (!movies) return <div className="main-view"/>;
+    if (!user && !toLogIn) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} onClick={() => this.onGoToLoginButtonClick()}/>
 
-      return (
-       <div className="main-view">Flix-For-Fun
+    // Before the movies have been loaded
+    if (!movies) return <div className="main-view"/>;
 
-    {/* If the state of `selectedMovie` is not null, that selected movie will be returned which renders movie-view. Otherwise all *movies will be returned */}
-       { selectedMovie
-        ? <MovieView movie={selectedMovie} onClick={() => this.onBackButtonClick()}/>
+    return (
+      <Row className="main-view justify-content-md-center">
+
+      {/* If the state of `selectedMovie` is not null, that selected movie will be returned which renders movie-view. Otherwise ALL movies will be returned */}
+      { selectedMovie
+        ? (
+          <Col md={8}>
+            <MovieView movie={selectedMovie} onClick={() => this.onBackButtonClick()}/>
+          </Col>
+        )
         : movies.map(movie => (
-         <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
-       ))}
-       </div>
-      );
-    }
+          <Col md={3}>
+            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
+          </Col>
+        ))
+      }
+      </Row>
+    );
   }
+}

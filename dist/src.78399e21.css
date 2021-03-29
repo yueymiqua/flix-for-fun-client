@@ -17,7 +17,8 @@ button {
 
 .login-span {
   font-size: 20px;
-  color: #CC0066;
+  color: #cc0066;
+  font-weight: 500;
 }
 .registration-form {
   text-align: center;
@@ -27,17 +28,8 @@ button {
   font-size: 20px;
   color: #cc0066;
 }
-.movie-card {
-  font-size: 25px;
-  margin: 15px;
-  background-color: beige;
-  max-width: 25vw;
-  cursor: pointer;
-  border-color: midnightblue;
-  border-style: double;
-  margin: 0 auto;
-}
 .movie-view {
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -53,22 +45,17 @@ button {
 .movie-description,
 .movie-genre,
 .movie-director {
-  font-size: 25px;
-  max-width: 50vw;
-  margin: 0 auto;
-}
-
-.movie-description {
-  color: #cc0066;
-}
-
-.back-button {
-  padding: 10px;
   font-size: 20px;
+  max-width: 50vw;
 }
-.main-view {
-  font-size: 40px;
-  text-align: center;
+
+.label {
+  color: #cc0066;
+  font-weight: 500;
+}
+
+.value {
+  color: steelblue;
 }
 .app-container {
   color: steelblue;

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 import './registration-view.scss'
 
@@ -15,32 +17,33 @@ export function RegistrationView(props) {
     }
     
     return (
-        <form className="registration-form">
+        <Form className="registration-form justify-content-md-center">
           <h1>Registration Page</h1>
-          <label>
+          <Form.Label>
             Username:
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
-          </label>
+            <input type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)}/>
+          </Form.Label>
           <br></br>
-          <label>
+          <Form.Label>
             Password:
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-          </label>
+            <input type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
+          </Form.Label>
           <br></br>
-          <label>
+          <Form.Label>
             Email:
-            <input type="email"  value={email} onChange={e => setEmail(e.target.value)}/>
-          </label>
+            <input type="email"  placeholder="Enter email" value={email} onChange={e => setEmail(e.target.value)}/>
+          </Form.Label>
           <br></br>
-          <label>
+          <Form.Label>
             Birthday:
             <input type="date" value={birthday} onChange={e=> setBirthday(e.target.value)}/>
-          </label>
+          </Form.Label>
           <br></br>
-          <button type="submit" onClick={handleSubmit}>Submit</button>
+          <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
           <br></br>
-          <span className="registration-span">Existing User?</span><button type="button" onClick={() => props.onClick()}>Go to Login Page</button>
-        </form>
+          <span className="registration-span">Existing User?</span>
+          <Button variant="secondary" type="button" onClick={() => props.onClick()}>Go to Login Page</Button>
+        </Form>
     );
 }
 
