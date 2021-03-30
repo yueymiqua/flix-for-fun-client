@@ -1,3 +1,5 @@
+$secondary-color: #cc0066;
+
 label {
     font-size: 20px;
 }
@@ -17,5 +19,6 @@ button {
 
 .login-span {
     font-size: 20px;
-    color: #CC0066
+    color: $secondary-color;
+    font-weight: 500;
 }
