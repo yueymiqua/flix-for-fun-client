@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
 
 import './login-view.scss'
+import axios from 'axios';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
-  const handleSubmit = () => {
-    // e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Send a request to server for authentication
+    axios.post('https://flix-for-fun.herokuapp.com/login', {
+        Username: username,
+        Password: password
+    }).then(response => {
+        const data = response.data;
+        props.onLoggedIn(data);
+    }).catch(error => {
+        console.log('User not found.')
+        alert('Incorrect username/password - Please try again!')
+    })
   };
 
   return (
@@ -32,7 +41,9 @@ export function LoginView(props) {
       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
       <br></br>
       <span className="login-span">New User?</span>
-      <Button variant="secondary" type="button" onClick={() => props.onClick()}>Go to Registration Page</Button>
+      <Link to="/register">
+        <Button variant="secondary" type="button">Go to Registration Page</Button>
+      </Link>
     </Form>
   );
 }
