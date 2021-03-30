@@ -34389,10 +34389,29 @@ function RegistrationView(props) {
       birthday = _useState8[0],
       setBirthday = _useState8[1];
 
+<<<<<<< Updated upstream
   var handleSubmit = function handleSubmit() {
     //e.preventDefault();
     console.log(username, password, email, birthday);
     props.onLoggedIn(username);
+=======
+  var handleRegister = function handleRegister(e) {
+    e.preventDefault();
+
+    _axios.default.post('https://flix-for-fun.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    }).then(function (response) {
+      var data = response.data;
+      console.log(data);
+      alert("Registration Complete - Please log in!");
+      window.open('/', '_self'); // second argument '_self' is necessary so the page opens in current tab
+    }).catch(function (error) {
+      console.log('error registering the user');
+    });
+>>>>>>> Stashed changes
   };
 
   return _react.default.createElement(_Form.default, {
@@ -34970,8 +34989,23 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.setState({
         toLogIn: true
       });
+<<<<<<< Updated upstream
     } // When a user successfully logs in, this function is invoked and updates the state of the 'user' property to that particular user
 
+=======
+    }
+  }, {
+    key: "onLogOut",
+    value: function onLogOut() {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      this.setState({
+        user: null
+      });
+      console.log('Logout Successful');
+      alert('Logged out successfully - Have a great day!');
+    }
+>>>>>>> Stashed changes
   }, {
     key: "onLoggedIn",
     value: function onLoggedIn(user) {
@@ -35012,6 +35046,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
+<<<<<<< Updated upstream
       return _react.default.createElement(_Row.default, {
         className: "main-view justify-content-md-center"
       }, selectedMovie ? _react.default.createElement(_Col.default, {
@@ -35032,6 +35067,85 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           }
         }));
       }));
+=======
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
+        className: "main-view"
+      }, user ? _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, _react.default.createElement(_Button.default, {
+        variant: "danger",
+        type: "button",
+        onClick: function onClick() {
+          return _this3.onLogOut();
+        }
+      }, "Logout")) : null, _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/",
+        render: function render() {
+          // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
+          if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onLoggedIn: function onLoggedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          });
+          return movies.map(function (m) {
+            return _react.default.createElement(_movieCard.MovieCard, {
+              key: m._id,
+              movie: m
+            });
+          });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/register",
+        render: function render() {
+          return _react.default.createElement(_registrationView.RegistrationView, null);
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/movies/:movieId",
+        render: function render(_ref) {
+          var match = _ref.match;
+          return _react.default.createElement(_movieView.MovieView, {
+            movie: movies.find(function (m) {
+              return m._id === match.params.movieId;
+            })
+          });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/movies/directors/:Name",
+        render: function render(_ref2) {
+          var match = _ref2.match;
+          if (!movies) return _react.default.createElement("div", {
+            className: "main-view"
+          });
+          return _react.default.createElement(_directorView.DirectorView, {
+            director: movies.find(function (m) {
+              return m.Director.Name === match.params.Name;
+            }).Director
+          });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/movies/genres/:Name",
+        render: function render(_ref3) {
+          var match = _ref3.match;
+          if (!movies) return _react.default.createElement("div", {
+            className: "main-view"
+          });
+          return _react.default.createElement(_genreView.GenreView, {
+            genre: movies.find(function (m) {
+              return m.Genre.Name === match.params.Name;
+            }).Genre
+          });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/users/:Username",
+        render: function render(_ref4) {
+          var history = _ref4.history;
+          return _react.default.createElement(_profileView.ProfileView, {
+            history: history
+          });
+        }
+      })));
+>>>>>>> Stashed changes
     }
   }]);
 
@@ -35135,7 +35249,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< Updated upstream
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "57780" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64469" + '/');
+>>>>>>> Stashed changes
 
   ws.onmessage = function (event) {
     checkedAssets = {};

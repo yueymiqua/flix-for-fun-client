@@ -3,6 +3,13 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row'; // Row from React-Bootstrap
 import Col from 'react-bootstrap/Col'; // Column from React-Bootstrap
+<<<<<<< Updated upstream
+=======
+import Button from 'react-bootstrap/Button';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+>>>>>>> Stashed changes
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -67,6 +74,19 @@ export class MainView extends React.Component {
             user
         });
     }
+<<<<<<< Updated upstream
+=======
+
+    onLogOut() {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        this.setState({
+            user: null
+        })
+        console.log('Logout Successful')
+        alert('Logged out successfully - Have a great day!')
+    }
+>>>>>>> Stashed changes
   
   render() {
     // If the state isn't initialized, this will throw on runtime
@@ -82,6 +102,7 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view"/>;
 
     return (
+<<<<<<< Updated upstream
       <Row className="main-view justify-content-md-center">
 
       {/* If the state of `selectedMovie` is not null, that selected movie will be returned which renders movie-view. Otherwise ALL movies will be returned */}
@@ -101,3 +122,33 @@ export class MainView extends React.Component {
     );
   }
 }
+=======
+    <Router>
+      <div className="main-view">
+        { user
+        ? <Link to={`/`}><Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button></Link>
+        : null
+        }
+        <Route exact path="/" render={() => {
+          // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
+          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
+          return movies.map(m => <MovieCard key={m._id} movie={m}/>)}}
+        />
+        <Route path="/register" render={() => <RegistrationView/>}/>
+        <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/> }/>
+        <Route path="/movies/directors/:Name" render={({match}) => {
+          if(!movies) return <div className="main-view"/>;
+          return <DirectorView director={movies.find(m => m.Director.Name === match.params.Name).Director}/>}
+        }/>
+        <Route path="/movies/genres/:Name" render={({match}) => {
+          if(!movies) return <div className="main-view"/>;
+          return <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name).Genre}/>}
+        }/>
+        <Route path="/users/:Username" render={({history}) => { return <ProfileView history={history}/> }}/>
+        
+      </div>
+    </Router>
+    );
+  }
+}
+>>>>>>> Stashed changes

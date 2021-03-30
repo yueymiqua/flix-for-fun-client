@@ -10,10 +10,29 @@ export function RegistrationView(props) {
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
 
+<<<<<<< Updated upstream
     const handleSubmit = () => {
         //e.preventDefault();
         console.log(username, password, email, birthday);
         props.onLoggedIn(username)
+=======
+    const handleRegister = (e) => {
+      e.preventDefault();
+
+      axios.post('https://flix-for-fun.herokuapp.com/users', {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday,
+      }).then(response => {
+        const data = response.data;
+        console.log(data)
+        alert("Registration Complete - Please log in!")
+        window.open('/', '_self'); // second argument '_self' is necessary so the page opens in current tab
+      }).catch(error => {
+          console.log('error registering the user');
+      })
+>>>>>>> Stashed changes
     }
     
     return (
