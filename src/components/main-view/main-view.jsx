@@ -3,13 +3,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row'; // Row from React-Bootstrap
 import Col from 'react-bootstrap/Col'; // Column from React-Bootstrap
-<<<<<<< Updated upstream
-=======
 import Button from 'react-bootstrap/Button';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
->>>>>>> Stashed changes
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -74,8 +71,6 @@ export class MainView extends React.Component {
             user
         });
     }
-<<<<<<< Updated upstream
-=======
 
     onLogOut() {
         localStorage.removeItem('user');
@@ -86,7 +81,6 @@ export class MainView extends React.Component {
         console.log('Logout Successful')
         alert('Logged out successfully - Have a great day!')
     }
->>>>>>> Stashed changes
   
   render() {
     // If the state isn't initialized, this will throw on runtime
@@ -102,27 +96,6 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view"/>;
 
     return (
-<<<<<<< Updated upstream
-      <Row className="main-view justify-content-md-center">
-
-      {/* If the state of `selectedMovie` is not null, that selected movie will be returned which renders movie-view. Otherwise ALL movies will be returned */}
-      { selectedMovie
-        ? (
-          <Col md={8}>
-            <MovieView movie={selectedMovie} onClick={() => this.onBackButtonClick()}/>
-          </Col>
-        )
-        : movies.map(movie => (
-          <Col md={3}>
-            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)}/>
-          </Col>
-        ))
-      }
-      </Row>
-    );
-  }
-}
-=======
     <Router>
       <div className="main-view">
         { user
@@ -151,4 +124,3 @@ export class MainView extends React.Component {
     );
   }
 }
->>>>>>> Stashed changes
