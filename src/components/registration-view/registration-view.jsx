@@ -10,12 +10,6 @@ export function RegistrationView(props) {
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
 
-<<<<<<< Updated upstream
-    const handleSubmit = () => {
-        //e.preventDefault();
-        console.log(username, password, email, birthday);
-        props.onLoggedIn(username)
-=======
     const handleRegister = (e) => {
       e.preventDefault();
 
@@ -32,7 +26,6 @@ export function RegistrationView(props) {
       }).catch(error => {
           console.log('error registering the user');
       })
->>>>>>> Stashed changes
     }
     
     return (
