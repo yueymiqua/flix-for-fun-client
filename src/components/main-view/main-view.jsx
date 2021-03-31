@@ -111,7 +111,14 @@ export class MainView extends React.Component {
     <Router>
       <div className="main-view">
         { user
-        ? <Link to={`/`}><Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button></Link>
+        ? <div>
+            <Link to={`/`}>
+              <Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button>
+            </Link>
+            <Link to={`/users/${user}`}>
+              <Button variant="primary" type="button">View Profile</Button>
+            </Link>
+          </div>
         : null
         }
         <Route exact path="/" render={() => {
@@ -129,7 +136,7 @@ export class MainView extends React.Component {
           if(!movies) return <div className="main-view"/>;
           return <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name).Genre}/>}
         }/>
-        <Route path="/users/:Username" render={({history}) => { return <ProfileView history={history}/> }}/>
+        <Route path="/users/:Username" render={({history}) => { return <ProfileView history={history} user={user} movies={movies} /> }}/>
         
       </div>
     </Router>
