@@ -3,6 +3,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
+import './profile-view.scss';
+
 export class ProfileView extends React.Component {
 
   constructor(){
@@ -149,6 +151,20 @@ export class ProfileView extends React.Component {
     });
   }
 
+  onHandleRemoveFavoriteMovie(e, movieId){
+    e.preventDefault();
+    let username = localStorage.getItem('user');
+    let token = localStorage.getItem('token');
+    axios.delete(`https://flix-for-fun.herokuapp.com/users/${username}/Movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(() => {
+      alert('Movie removed from favorites list!')
+      window.location.reload()
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
   render(){
 
       const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton, showConfirmDeleteButton} = this.state;
@@ -174,7 +190,11 @@ export class ProfileView extends React.Component {
             </div>
             <div className="favorite-movies">
               <span className="label">Favorite Movies: </span>
-              <span className="value">{FavoriteMovies}</span>
+              {FavoriteMovies.map(mId => 
+                <div key={`${mId}`}>
+                  <span className="value">{mId}</span>
+                  <Button className="remove-movie" variant="danger" type="button" onClick={(e) => this.onHandleRemoveFavoriteMovie(e, mId)}>X</Button>
+                </div>)}
             </div>
             <Button variant="primary" type="button" onClick={() => this.changeVisibleButtons()}>Update Information</Button>
             { !showConfirmDeleteButton

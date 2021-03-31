@@ -37934,7 +37934,12 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.GenreView = GenreView;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37949,6 +37954,8 @@ var _react = _interopRequireDefault(require("react"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _reactRouterDom = require("react-router-dom");
+
+require("./profile-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38165,6 +38172,24 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onHandleRemoveFavoriteMovie",
+    value: function onHandleRemoveFavoriteMovie(e, movieId) {
+      e.preventDefault();
+      var username = localStorage.getItem('user');
+      var token = localStorage.getItem('token');
+
+      _axios.default.delete("https://flix-for-fun.herokuapp.com/users/".concat(username, "/Movies/").concat(movieId), {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function () {
+        alert('Movie removed from favorites list!');
+        window.location.reload();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -38202,9 +38227,20 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "favorite-movies"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Favorite Movies: "), _react.default.createElement("span", {
-        className: "value"
-      }, FavoriteMovies)), _react.default.createElement(_Button.default, {
+      }, "Favorite Movies: "), FavoriteMovies.map(function (mId) {
+        return _react.default.createElement("div", {
+          key: "".concat(mId)
+        }, _react.default.createElement("span", {
+          className: "value"
+        }, mId), _react.default.createElement(_Button.default, {
+          className: "remove-movie",
+          variant: "danger",
+          type: "button",
+          onClick: function onClick(e) {
+            return _this4.onHandleRemoveFavoriteMovie(e, mId);
+          }
+        }, "X"));
+      })), _react.default.createElement(_Button.default, {
         variant: "primary",
         type: "button",
         onClick: function onClick() {
@@ -38272,7 +38308,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.ProfileView = ProfileView;
-},{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/main-view/main-view.scss":[function(require,module,exports) {
+},{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
