@@ -37991,7 +37991,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       Email: null,
       Birthday: null,
       FavoriteMovies: [],
-      showUpdateButton: false
+      showUpdateButton: false,
+      showConfirmDeleteButton: false
     };
     _this.setUsername = _this.setUsername.bind(_assertThisInitialized(_this));
     _this.setPassword = _this.setPassword.bind(_assertThisInitialized(_this));
@@ -38008,6 +38009,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       if (accessToken !== null) {
         this.getUser(accessToken);
       }
+
+      ;
     }
   }, {
     key: "getUser",
@@ -38118,6 +38121,42 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       ;
     }
   }, {
+    key: "changeDeleteButtonVisibility",
+    value: function changeDeleteButtonVisibility() {
+      var showConfirmDeleteButton = this.state.showConfirmDeleteButton;
+      this.setState({
+        showConfirmDeleteButton: true
+      });
+    }
+  }, {
+    key: "cancelDelete",
+    value: function cancelDelete() {
+      var showConfirmDeleteButton = this.state.showConfirmDeleteButton;
+      this.setState({
+        showConfirmDeleteButton: false
+      });
+    }
+  }, {
+    key: "onHandleDelete",
+    value: function onHandleDelete(e) {
+      e.preventDefault();
+      var token = localStorage.getItem('token');
+      var username = localStorage.getItem('user');
+
+      _axios.default.delete("https://flix-for-fun.herokuapp.com/users/".concat(username), {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function () {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        alert('User Deleted!');
+        window.location.href = "/";
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "notUpdateInfo",
     value: function notUpdateInfo() {
       var showUpdateButton = this.state.showUpdateButton;
@@ -38136,7 +38175,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           Email = _this$state2.Email,
           Birthday = _this$state2.Birthday,
           FavoriteMovies = _this$state2.FavoriteMovies,
-          showUpdateButton = _this$state2.showUpdateButton;
+          showUpdateButton = _this$state2.showUpdateButton,
+          showConfirmDeleteButton = _this$state2.showConfirmDeleteButton;
       var movies = this.props.movies;
       return _react.default.createElement("div", {
         className: "profile"
@@ -38170,7 +38210,25 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this4.changeVisibleButtons();
         }
-      }, "Update Information")) : _react.default.createElement("div", null, _react.default.createElement("input", {
+      }, "Update Information"), !showConfirmDeleteButton ? _react.default.createElement(_Button.default, {
+        variant: "warning",
+        type: "button",
+        onClick: function onClick() {
+          return _this4.changeDeleteButtonVisibility();
+        }
+      }, "Delete Profile") : _react.default.createElement("div", null, _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+        variant: "danger",
+        type: "button",
+        onClick: function onClick(e) {
+          return _this4.onHandleDelete(e);
+        }
+      }, "CONFIRM DELETE"), _react.default.createElement(_Button.default, {
+        variant: "primary",
+        type: "button",
+        onClick: function onClick() {
+          return _this4.cancelDelete();
+        }
+      }, "CANCEL"))) : _react.default.createElement("div", null, _react.default.createElement("input", {
         type: "username",
         className: "new-username",
         placeholder: "Enter new username",

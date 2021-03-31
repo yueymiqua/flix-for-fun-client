@@ -13,8 +13,9 @@ export class ProfileView extends React.Component {
       Email: null,
       Birthday: null,
       FavoriteMovies: [],
-      showUpdateButton: false
-    }
+      showUpdateButton: false,
+      showConfirmDeleteButton: false
+    };
       this.setUsername = this.setUsername.bind(this);
       this.setPassword = this.setPassword.bind(this);
       this.setEmail = this.setEmail.bind(this);
@@ -25,7 +26,7 @@ export class ProfileView extends React.Component {
     let accessToken = localStorage.getItem('token');
     if(accessToken !== null) {
       this.getUser(accessToken);
-    }
+    };
   }
 
   getUser(token) {
@@ -48,25 +49,25 @@ export class ProfileView extends React.Component {
   setUsername(event){
     this.setState({
       Username: event.target.value
-    })
+    });
   }
 
   setPassword(event){
     this.setState({
       Password: event.target.value
-    })  
+    });
   }
 
   setEmail(event){
     this.setState({
       Email: event.target.value
-    })  
+    });
   }
 
   setBirthday(event){
     this.setState({
       Birthday: event.target.value
-    })  
+    });
   }
 
   onHandleChange(e){
@@ -110,18 +111,47 @@ export class ProfileView extends React.Component {
     alert("Information Updated!");
     };
   }
-  
+
+  changeDeleteButtonVisibility(){
+    const {showConfirmDeleteButton} = this.state;
+    this.setState({
+      showConfirmDeleteButton: true
+    });
+  }
+
+  cancelDelete(){
+    const {showConfirmDeleteButton} = this.state;
+    this.setState({
+      showConfirmDeleteButton: false
+    });
+  }
+
+  onHandleDelete(e){
+    e.preventDefault();
+    let token = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+    axios.delete(`https://flix-for-fun.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(() => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      alert('User Deleted!')
+      window.location.href="/";
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 
   notUpdateInfo(){
     const {showUpdateButton} = this.state;
     this.setState({
       showUpdateButton: false
-    })
+    });
   }
 
   render(){
 
-      const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton} = this.state;
+      const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton, showConfirmDeleteButton} = this.state;
       const {movies} = this.props;
 
       return(
@@ -147,6 +177,14 @@ export class ProfileView extends React.Component {
               <span className="value">{FavoriteMovies}</span>
             </div>
             <Button variant="primary" type="button" onClick={() => this.changeVisibleButtons()}>Update Information</Button>
+            { !showConfirmDeleteButton
+            ? <Button variant="warning" type="button" onClick={() => this.changeDeleteButtonVisibility()}>Delete Profile</Button>
+            : <div>
+                <br></br>
+                <Button variant="danger" type="button" onClick={(e) => this.onHandleDelete(e)}>CONFIRM DELETE</Button>
+                <Button variant="primary" type="button" onClick={() => this.cancelDelete()}>CANCEL</Button>
+              </div>
+            }
           </div>
         )
           
