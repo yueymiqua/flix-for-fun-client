@@ -8,11 +8,6 @@ import { Link } from 'react-router-dom';
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
-
-  // addToFavorites(){
-  //   const {movie} = this.state;
-
-  // }
   
   render(){
     // This is given to the <MovieCard/> component by the outer world,
@@ -29,7 +24,6 @@ export class MovieCard extends React.Component {
         <Link to={`/movies/${movie._id}`}>
           <Button variant="link">See Movie Details</Button>
         </Link>
-        {/* <Button variant="warning" onClick={() => addToFavorites()}>Add to Favorites</Button> */}
         </Card.Body>
       </Card>
     )

@@ -37581,10 +37581,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
 
   _createClass(MovieCard, [{
     key: "render",
-    value: // addToFavorites(){
-    //   const {movie} = this.state;
-    // }
-    function render() {
+    value: function render() {
       // This is given to the <MovieCard/> component by the outer world,
       // which in this case is 'MainView', as 'MainView' is what's
       // connected to your database via the movies endpoint of your API
@@ -37996,6 +37993,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       FavoriteMovies: [],
       showUpdateButton: false
     };
+    _this.setUsername = _this.setUsername.bind(_assertThisInitialized(_this));
+    _this.setPassword = _this.setPassword.bind(_assertThisInitialized(_this));
+    _this.setEmail = _this.setEmail.bind(_assertThisInitialized(_this));
+    _this.setBirthday = _this.setBirthday.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -38032,11 +38033,71 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleUpdate",
-    value: function handleUpdate() {
-      var username = localStorage.getItem("user");
+    key: "setUsername",
+    value: function setUsername(event) {
+      this.setState({
+        Username: event.target.value
+      });
+    }
+  }, {
+    key: "setPassword",
+    value: function setPassword(event) {
+      this.setState({
+        Password: event.target.value
+      });
+    }
+  }, {
+    key: "setEmail",
+    value: function setEmail(event) {
+      this.setState({
+        Email: event.target.value
+      });
+    }
+  }, {
+    key: "setBirthday",
+    value: function setBirthday(event) {
+      this.setState({
+        Birthday: event.target.value
+      });
+    }
+  }, {
+    key: "onHandleChange",
+    value: function onHandleChange(e) {
+      var _this3 = this;
 
-      _axios.default.put("https://flix-for-fun.herokuapp.com/users/".concat(username));
+      e.preventDefault();
+      var token = localStorage.getItem('token');
+      var username = localStorage.getItem('user');
+      var _this$state = this.state,
+          Username = _this$state.Username,
+          Password = _this$state.Password,
+          Email = _this$state.Email,
+          Birthday = _this$state.Birthday;
+      (0, _axios.default)({
+        method: 'put',
+        url: "https://flix-for-fun.herokuapp.com/users/".concat(username),
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        },
+        data: {
+          Username: Username,
+          Password: Password,
+          Email: Email,
+          Birthday: Birthday
+        }
+      }).then(function (res) {
+        _this3.setState({
+          Username: res.data.Username,
+          Password: res.data.Password,
+          Email: res.data.Email,
+          Birthday: res.data.Birthday
+        });
+
+        _this3.changeVisibleButtons();
+
+        localStorage.setItem('user', _this3.state.Username);
+        window.location.reload();
+      });
     }
   }, {
     key: "changeVisibleButtons",
@@ -38053,6 +38114,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         });
         alert("Information Updated!");
       }
+
+      ;
     }
   }, {
     key: "notUpdateInfo",
@@ -38065,16 +38128,16 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
-      var _this$state = this.state,
-          Username = _this$state.Username,
-          Email = _this$state.Email,
-          Birthday = _this$state.Birthday,
-          FavoriteMovies = _this$state.FavoriteMovies,
-          showUpdateButton = _this$state.showUpdateButton;
+      var _this$state2 = this.state,
+          Username = _this$state2.Username,
+          Password = _this$state2.Password,
+          Email = _this$state2.Email,
+          Birthday = _this$state2.Birthday,
+          FavoriteMovies = _this$state2.FavoriteMovies,
+          showUpdateButton = _this$state2.showUpdateButton;
       var movies = this.props.movies;
-      console.log(movies);
       return _react.default.createElement("div", {
         className: "profile"
       }, !showUpdateButton ? _react.default.createElement("div", null, _react.default.createElement("div", {
@@ -38105,34 +38168,38 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         variant: "primary",
         type: "button",
         onClick: function onClick() {
-          return _this3.changeVisibleButtons();
+          return _this4.changeVisibleButtons();
         }
       }, "Update Information")) : _react.default.createElement("div", null, _react.default.createElement("input", {
         type: "username",
         className: "new-username",
-        placeholder: "Enter new username"
+        placeholder: "Enter new username",
+        onChange: this.setUsername
       }), _react.default.createElement("input", {
         type: "password",
         className: "new-password",
-        placeholder: "Enter new password"
+        placeholder: "Enter new password",
+        onChange: this.setPassword
       }), _react.default.createElement("input", {
         type: "email",
         className: "new-email",
-        placeholder: "Enter new email"
+        placeholder: "Enter new email",
+        onChange: this.setEmail
       }), _react.default.createElement("input", {
         type: "date",
-        className: "new-birthday"
+        className: "new-birthday",
+        onChange: this.setBirthday
       }), _react.default.createElement(_Button.default, {
         variant: "success",
         type: "button",
-        onClick: function onClick() {
-          return _this3.changeVisibleButtons();
+        onClick: function onClick(e) {
+          return _this4.onHandleChange(e);
         }
       }, "Update"), _react.default.createElement(_Button.default, {
         variant: "secondary",
         type: "button",
         onClick: function onClick() {
-          return _this3.notUpdateInfo();
+          return _this4.notUpdateInfo();
         }
       }, "Cancel")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"

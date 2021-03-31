@@ -15,6 +15,10 @@ export class ProfileView extends React.Component {
       FavoriteMovies: [],
       showUpdateButton: false
     }
+      this.setUsername = this.setUsername.bind(this);
+      this.setPassword = this.setPassword.bind(this);
+      this.setEmail = this.setEmail.bind(this);
+      this.setBirthday = this.setBirthday.bind(this);
   }
 
   componentDidMount(){
@@ -41,9 +45,56 @@ export class ProfileView extends React.Component {
     });
   }
 
-  handleUpdate(){
-    let username = localStorage.getItem(`user`);
-    axios.put(`https://flix-for-fun.herokuapp.com/users/${username}`)
+  setUsername(event){
+    this.setState({
+      Username: event.target.value
+    })
+  }
+
+  setPassword(event){
+    this.setState({
+      Password: event.target.value
+    })  
+  }
+
+  setEmail(event){
+    this.setState({
+      Email: event.target.value
+    })  
+  }
+
+  setBirthday(event){
+    this.setState({
+      Birthday: event.target.value
+    })  
+  }
+
+  onHandleChange(e){
+    e.preventDefault();
+    let token = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+    let {Username, Password, Email, Birthday} = this.state;
+    axios({
+      method: 'put',
+      url: `https://flix-for-fun.herokuapp.com/users/${username}`,
+      headers: { Authorization: `Bearer ${token}`},
+      data: {
+        Username: Username,
+        Password: Password,
+        Email: Email,
+        Birthday: Birthday,
+      },
+    }).then((res) => {
+      this.setState({
+        Username: res.data.Username,
+        Password: res.data.Password,
+        Email: res.data.Email,
+        Birthday: res.data.Birthday,
+      });
+      this.changeVisibleButtons();
+      localStorage.setItem('user', this.state.Username);
+      window.location.reload()
+    });
   }
 
   changeVisibleButtons(){
@@ -51,14 +102,15 @@ export class ProfileView extends React.Component {
     if(!showUpdateButton){
       this.setState({
         showUpdateButton: true
-      })
+      });
     } else if(showUpdateButton){
       this.setState({
         showUpdateButton: false
-      })
-      alert("Information Updated!");
-    }
+      });
+    alert("Information Updated!");
+    };
   }
+  
 
   notUpdateInfo(){
     const {showUpdateButton} = this.state;
@@ -69,9 +121,8 @@ export class ProfileView extends React.Component {
 
   render(){
 
-      const {Username, Email, Birthday, FavoriteMovies, showUpdateButton} = this.state;
+      const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton} = this.state;
       const {movies} = this.props;
-      console.log(movies);
 
       return(
       <div className="profile">
@@ -100,11 +151,11 @@ export class ProfileView extends React.Component {
         )
           
         : <div>
-            <input type="username" className="new-username" placeholder="Enter new username"></input>
-            <input type="password" className="new-password" placeholder="Enter new password"></input>
-            <input type="email" className="new-email" placeholder="Enter new email"></input>
-            <input type="date" className="new-birthday"></input>
-            <Button variant="success" type="button" onClick={() => this.changeVisibleButtons()}>Update</Button>
+            <input type="username" className="new-username" placeholder="Enter new username" onChange={this.setUsername}></input>
+            <input type="password" className="new-password" placeholder="Enter new password" onChange={this.setPassword}></input>
+            <input type="email" className="new-email" placeholder="Enter new email" onChange={this.setEmail}></input>
+            <input type="date" className="new-birthday" onChange={this.setBirthday}></input>
+            <Button variant="success" type="button" onClick={(e) => this.onHandleChange(e)}>Update</Button>
             <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>
           </div>
         }
