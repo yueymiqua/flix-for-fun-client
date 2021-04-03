@@ -167,16 +167,16 @@ export class ProfileView extends React.Component {
 
   render(){
 
-      const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton, showConfirmDeleteButton} = this.state;
-      const {movies} = this.props;
+    const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton, showConfirmDeleteButton} = this.state;
+    const {movies} = this.props;
 
-      return(
+    return(
       <div className="profile">
         { !showUpdateButton
         ? (
           <div>
             <div className="profile-username">
-              <span className="label">Username: </span>
+              <span className="label" >Username: </span>
               <span className="value">{Username}</span>
             </div>
             <div className="profile-email">
@@ -209,9 +209,9 @@ export class ProfileView extends React.Component {
         )
           
         : <div>
-            <input type="username" className="new-username" placeholder="Enter new username" onChange={this.setUsername}></input>
+            <input type="username" className="new-username" placeholder="Enter new username" value={this.state.Username} onChange={this.setUsername}></input>
             <input type="password" className="new-password" placeholder="Enter new password" onChange={this.setPassword}></input>
-            <input type="email" className="new-email" placeholder="Enter new email" onChange={this.setEmail}></input>
+            <input type="email" className="new-email" placeholder="Enter new email" value={this.state.Email} onChange={this.setEmail}></input>
             <input type="date" className="new-birthday" onChange={this.setBirthday}></input>
             <Button variant="success" type="button" onClick={(e) => this.onHandleChange(e)}>Update</Button>
             <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>
@@ -221,7 +221,7 @@ export class ProfileView extends React.Component {
           <Button variant="primary" type="button">Discover More Movies!</Button>
         </Link>
       </div>
-      )
-    }
+    )
   }
+}
 
