@@ -25,46 +25,45 @@ import './main-view.scss';
 class MainView extends React.Component {
 
   constructor(){
-      super();
-        this.state = {
-          movies: [],
-          user: null
-        };
+    super();
+      this.state = {
+        movies: [],
+        user: {}
+      };
   }
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-        this.setState({
-            user: localStorage.getItem('user')
-        })
+      this.setState({
+          user: localStorage.getItem('user')
+      })
     }
     this.getMovies(accessToken);
+    this.getUser(accessToken);
   }
 
   // When a user successfully logs in, this function is invoked and updates the state of the 'user' property to that particular user
   onLoggedIn(authData) {
-      console.log(authData);
-      this.setState({
-          user: authData.user.Username
-      });
-      localStorage.setItem('token', authData.token);
-      localStorage.setItem('user', authData.user.Username);
-      this.getMovies(authData.token);
+    console.log(authData);
+    this.setState({
+        user: authData.user.Username
+    });
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+    window.location.reload();
   }
 
   // Below method is called when user logs in successfully, AND when the page is refreshed(called from componentDidMount)
   getMovies(token) {
-      axios.get('https://flix-for-fun.herokuapp.com/movies', {
-          headers: { Authorization: `Bearer ${token}`}
-      }).then(response => {
-        this.props.setMovies(response.data);
-        // this.setState({
-        //   movies: response.data
-        // });
-      }).catch(function(error) {
-          console.log(error);
-      });
+    axios.get('https://flix-for-fun.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(response => {
+      this.props.setMovies(response.data);
+    }).catch(function(error) {
+      console.log(error);
+    });
   }
 
   getUser(token) {
@@ -72,27 +71,25 @@ class MainView extends React.Component {
     axios.get(`https://flix-for-fun.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}`}
     }).then(response => {
-      this.state.setUser(response.data);
-      // this.setState({
-      //   Username: response.data.Username,
-      //   Password: response.data.Password,
-      //   Email: response.data.Email,
-      //   Birthday: response.data.Birthday,
-      //   FavoriteMovies: response.data.FavoriteMovies
-      // });
-    }).catch(error => {
+      this.props.setUser(response.data);
+    }).catch(function(error) {
       console.log(error);
     });
   }
 
   onLogOut() {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      this.setState({
-          user: null
-      })
-      console.log('Logout Successful')
-      alert('Logged out successfully - Have a great day!')
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.setState({
+      user: null
+    })
+    console.log('Logout Successful')
+    alert('Logged out successfully - Have a great day!')
+    window.location.href="/";
+  }
+
+  onProfileView(user){
+    window.location.href = `/users/${user.Username}`;
   }
   
   render() {
@@ -114,16 +111,16 @@ class MainView extends React.Component {
             <Link to={`/`}>
               <Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button>
             </Link>
-            <Link to={`/users/${user}`}>
-              <Button variant="primary" type="button">View Profile</Button>
+            <Link to={`/users/${user.Username}`}>
+              <Button variant="primary" type="button" onClick={(user) => this.onProfileView(user)}>View Profile</Button>
             </Link>
           </div>
         : null
         }
         <Route exact path="/" render={() => {
         // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
-        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
-        return <MoviesList movies={movies}/>
+          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
+          return <MoviesList movies={movies}/>
         }}/>
         <Row className="register justify-content-md-center">
           <Col>

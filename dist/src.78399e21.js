@@ -40260,7 +40260,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }).then(function () {
         _this3.setState({
           favorited: true
-        });
+        }); // window.location.reload();
+
       }).catch(function (error) {
         console.log(error);
       });
@@ -40282,7 +40283,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }).then(function () {
         _this4.setState({
           favorited: false
-        });
+        }); // window.location.reload();
+
       }).catch(function (error) {
         console.log(error);
       });
@@ -40642,42 +40644,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ProfileView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var accessToken = localStorage.getItem('token');
-
-      if (accessToken !== null) {
-        this.getUser(accessToken);
-      }
-
-      ;
-    }
-  }, {
-    key: "getUser",
-    value: function getUser(token) {
-      var _this2 = this;
-
-      var username = localStorage.getItem('user');
-
-      _axios.default.get("https://flix-for-fun.herokuapp.com/users/".concat(username), {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        }
-      }).then(function (response) {
-        _this2.setState({
-          user: {
-            Username: response.data.Username,
-            Password: response.data.Password,
-            Email: response.data.Email,
-            Birthday: response.data.Birthday,
-            FavoriteMovies: response.data.FavoriteMovies
-          }
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
     key: "setUsername",
     value: function setUsername(event) {
       this.setState({
@@ -40708,7 +40674,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onHandleChange",
     value: function onHandleChange(e) {
-      var _this3 = this;
+      var _this2 = this;
 
       e.preventDefault();
       var token = localStorage.getItem('token');
@@ -40731,16 +40697,16 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           Birthday: Birthday
         }
       }).then(function (res) {
-        _this3.setState({
+        _this2.setState({
           Username: res.data.Username,
           Password: res.data.Password,
           Email: res.data.Email,
           Birthday: res.data.Birthday
         });
 
-        _this3.changeVisibleButtons();
+        _this2.changeVisibleButtons();
 
-        localStorage.setItem('user', _this3.state.Username);
+        localStorage.setItem('user', _this2.state.Username);
         window.location.reload();
       });
     }
@@ -40827,6 +40793,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "matchMovieWithFavoritedMovieId",
     value: function matchMovieWithFavoritedMovieId(mId) {
+      if (!mId) return;
       var movies = this.props.movies;
       var array = [];
       mId.map(function (movieId) {
@@ -40841,9 +40808,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
-      var user = this.state.user;
+      var user = this.props.user;
       var showUpdateButton = this.state.showUpdateButton;
       var showConfirmDeleteButton = this.state.showConfirmDeleteButton;
       if (!user) return null;
@@ -40872,7 +40839,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "favorite"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Favorite Movies: "), favoriteMoviesObject.map(function (movieObject) {
+      }, "Favorite Movies: "), !favoriteMoviesObject ? null : favoriteMoviesObject.map(function (movieObject) {
         return _react.default.createElement(_Card.default, {
           className: "favorite-movies"
         }, _react.default.createElement(_Card.default.Img, {
@@ -40885,32 +40852,32 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           variant: "danger",
           type: "button",
           onClick: function onClick(e) {
-            return _this4.onHandleRemoveFavoriteMovie(e, movieObject._id);
+            return _this3.onHandleRemoveFavoriteMovie(e, movieObject._id);
           }
         }, "Remove from Favorites"));
       })), _react.default.createElement(_Button.default, {
         variant: "primary",
         type: "button",
         onClick: function onClick() {
-          return _this4.changeVisibleButtons();
+          return _this3.changeVisibleButtons();
         }
       }, "Update Information"), !showConfirmDeleteButton ? _react.default.createElement(_Button.default, {
         variant: "warning",
         type: "button",
         onClick: function onClick() {
-          return _this4.changeDeleteButtonVisibility();
+          return _this3.changeDeleteButtonVisibility();
         }
       }, "Delete Profile") : _react.default.createElement("div", null, _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
         variant: "danger",
         type: "button",
         onClick: function onClick(e) {
-          return _this4.onHandleDelete(e);
+          return _this3.onHandleDelete(e);
         }
       }, "CONFIRM DELETE"), _react.default.createElement(_Button.default, {
         variant: "primary",
         type: "button",
         onClick: function onClick() {
-          return _this4.cancelDelete();
+          return _this3.cancelDelete();
         }
       }, "CANCEL"))) : _react.default.createElement("div", null, _react.default.createElement("input", {
         type: "username",
@@ -40935,13 +40902,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         variant: "success",
         type: "button",
         onClick: function onClick(e) {
-          return _this4.onHandleChange(e);
+          return _this3.onHandleChange(e);
         }
       }, "Update"), _react.default.createElement(_Button.default, {
         variant: "secondary",
         type: "button",
         onClick: function onClick() {
-          return _this4.notUpdateInfo();
+          return _this3.notUpdateInfo();
         }
       }, "Cancel")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -40957,7 +40924,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    movies: state.movies
+    movies: state.movies,
+    user: state.user
   };
 };
 
@@ -41048,7 +41016,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       movies: [],
-      user: null
+      user: {}
     };
     return _this;
   }
@@ -41065,6 +41033,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }
 
       this.getMovies(accessToken);
+      this.getUser(accessToken);
     } // When a user successfully logs in, this function is invoked and updates the state of the 'user' property to that particular user
 
   }, {
@@ -41077,6 +41046,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
+      window.location.reload();
     } // Below method is called when user logs in successfully, AND when the page is refreshed(called from componentDidMount)
 
   }, {
@@ -41089,10 +41059,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this2.props.setMovies(response.data); // this.setState({
-        //   movies: response.data
-        // });
-
+        _this2.props.setMovies(response.data);
       }).catch(function (error) {
         console.log(error);
       });
@@ -41109,14 +41076,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this3.state.setUser(response.data); // this.setState({
-        //   Username: response.data.Username,
-        //   Password: response.data.Password,
-        //   Email: response.data.Email,
-        //   Birthday: response.data.Birthday,
-        //   FavoriteMovies: response.data.FavoriteMovies
-        // });
-
+        _this3.props.setUser(response.data);
       }).catch(function (error) {
         console.log(error);
       });
@@ -41131,6 +41091,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       console.log('Logout Successful');
       alert('Logged out successfully - Have a great day!');
+      window.location.href = "/";
+    }
+  }, {
+    key: "onProfileView",
+    value: function onProfileView(user) {
+      window.location.href = "/users/".concat(user.Username);
     }
   }, {
     key: "render",
@@ -41156,10 +41122,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return _this4.onLogOut();
         }
       }, "Logout")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/users/".concat(user)
+        to: "/users/".concat(user.Username)
       }, _react.default.createElement(_Button.default, {
         variant: "primary",
-        type: "button"
+        type: "button",
+        onClick: function onClick(user) {
+          return _this4.onProfileView(user);
+        }
       }, "View Profile"))) : null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
@@ -41293,9 +41262,7 @@ function user() {
 
   switch (action.type) {
     case _actions.SET_USER:
-      return {
-        value: action.value
-      };
+      return action.value;
 
     default:
       return state;

@@ -14,14 +14,14 @@ export function LoginView(props) {
     e.preventDefault();
     // Send a request to server for authentication
     axios.post('https://flix-for-fun.herokuapp.com/login', {
-        Username: username,
-        Password: password
+      Username: username,
+      Password: password
     }).then(response => {
-        const data = response.data;
-        props.onLoggedIn(data);
+      const data = response.data;
+      props.onLoggedIn(data);
     }).catch(error => {
-        console.log('User not found.')
-        alert('Incorrect username/password - Please try again!')
+      console.log('User not found.')
+      alert('Incorrect username/password - Please try again!')
     })
   };
 

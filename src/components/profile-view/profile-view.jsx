@@ -14,38 +14,12 @@ class ProfileView extends React.Component {
     super();
     this.state={
       showUpdateButton: false,
-      showConfirmDeleteButton: false
+      showConfirmDeleteButton: false,
     };
       this.setUsername = this.setUsername.bind(this);
       this.setPassword = this.setPassword.bind(this);
       this.setEmail = this.setEmail.bind(this);
       this.setBirthday = this.setBirthday.bind(this);
-  }
-
-  componentDidMount(){
-    let accessToken = localStorage.getItem('token');
-    if(accessToken !== null) {
-      this.getUser(accessToken);
-    };
-  }
-
-  getUser(token) {
-    let username = localStorage.getItem('user');
-    axios.get(`https://flix-for-fun.herokuapp.com/users/${username}`, {
-      headers: { Authorization: `Bearer ${token}`}
-    }).then(response => {
-      this.setState({
-        user: {
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
-          FavoriteMovies: response.data.FavoriteMovies
-        }
-      });
-    }).catch(error => {
-      console.log(error);
-    });
   }
 
   setUsername(event){
@@ -166,6 +140,7 @@ class ProfileView extends React.Component {
   }
   
   matchMovieWithFavoritedMovieId(mId){
+    if(!mId) return;
     let { movies } = this.props;
     let array =[];
     mId.map(movieId => {
@@ -179,13 +154,12 @@ class ProfileView extends React.Component {
   }
 
   render(){
-
-    let { user } = this.state;
+    
+    let { user } = this.props;
     let { showUpdateButton } = this.state;  
     let { showConfirmDeleteButton } = this.state;
-
+    
     if(!user) return null;
-
     let favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(user.FavoriteMovies);
 
     return(
@@ -208,12 +182,15 @@ class ProfileView extends React.Component {
             </div>
             <div className="favorite">
               <span className="label">Favorite Movies: </span>
-              {favoriteMoviesObject.map(movieObject => 
+              {!favoriteMoviesObject
+              ? null
+              : favoriteMoviesObject.map(movieObject => 
                 <Card className="favorite-movies">
-                    <Card.Img className="favorite-movie-thumbnail" src={`${movieObject.ImagePath}`}/>
-                    <Card.Title className="favorite-movie-title">{movieObject.Title}</Card.Title>
-                    <Button className="remove-movie" variant="danger" type="button" onClick={(e) => this.onHandleRemoveFavoriteMovie(e, movieObject._id)}>Remove from Favorites</Button>
-                </Card>)}
+                  <Card.Img className="favorite-movie-thumbnail" src={`${movieObject.ImagePath}`}/>
+                  <Card.Title className="favorite-movie-title">{movieObject.Title}</Card.Title>
+                  <Button className="remove-movie" variant="danger" type="button" onClick={(e) => this.onHandleRemoveFavoriteMovie(e, movieObject._id)}>Remove from Favorites</Button>
+                </Card>)
+              }
             </div>
             <Button variant="primary" type="button" onClick={() => this.changeVisibleButtons()}>Update Information</Button>
             { !showConfirmDeleteButton
@@ -245,7 +222,10 @@ class ProfileView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies };
+  return { 
+    movies: state.movies,
+    user: state.user
+  };
 }
 
 export default connect(mapStateToProps)(ProfileView);

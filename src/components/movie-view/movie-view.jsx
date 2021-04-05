@@ -13,7 +13,7 @@ class MovieView extends React.Component{
     super();
     this.state={
       favorited: false
-    };
+  };
 }
 
 getUserData(movie) {
@@ -46,6 +46,7 @@ addToFavoriteListAndshowAlreadyAddedButton(e, movie){
     this.setState({
       favorited: true
     });
+    // window.location.reload();
   }).catch(error => {
     console.log(error);
   });
@@ -62,6 +63,7 @@ removeFromFavoriteListandShowAddToFavoriteButton(e, movie){
     this.setState({
       favorited: false
     });
+    // window.location.reload();
   }).catch(error => {
     console.log(error);
   });
