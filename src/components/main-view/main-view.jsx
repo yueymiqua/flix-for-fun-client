@@ -9,77 +9,97 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 // import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import  MovieView from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { ProfileView } from '../profile-view/profile-view';
+import  ProfileView from '../profile-view/profile-view';
 
 import './main-view.scss';
 
 class MainView extends React.Component {
 
-    constructor(){
-        super();
+  constructor(){
+      super();
         this.state = {
-            user: null
+          movies: [],
+          user: null
         };
-    }
+  }
 
-    componentDidMount() {
-      let accessToken = localStorage.getItem('token');
-      if (accessToken !== null) {
-          this.setState({
-              user: localStorage.getItem('user')
-          })
-      }
-      this.getMovies(accessToken);
-    }
-
-    // When a user successfully logs in, this function is invoked and updates the state of the 'user' property to that particular user
-    onLoggedIn(authData) {
-        console.log(authData);
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
         this.setState({
-            user: authData.user.Username
-        });
-        localStorage.setItem('token', authData.token);
-        localStorage.setItem('user', authData.user.Username);
-        this.getMovies(authData.token);
-    }
-
-    // Below method is called when user logs in successfully, AND when the page is refreshed(called from componentDidMount)
-    getMovies(token) {
-        axios.get('https://flix-for-fun.herokuapp.com/movies', {
-            headers: { Authorization: `Bearer ${token}`}
-        }).then(response => {
-          this.props.setMovies(response.data);
-          // this.setState({
-          //   movies: response.data
-          // });
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
-
-    onLogOut() {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        this.setState({
-            user: null
+            user: localStorage.getItem('user')
         })
-        console.log('Logout Successful')
-        alert('Logged out successfully - Have a great day!')
     }
+    this.getMovies(accessToken);
+  }
+
+  // When a user successfully logs in, this function is invoked and updates the state of the 'user' property to that particular user
+  onLoggedIn(authData) {
+      console.log(authData);
+      this.setState({
+          user: authData.user.Username
+      });
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token);
+  }
+
+  // Below method is called when user logs in successfully, AND when the page is refreshed(called from componentDidMount)
+  getMovies(token) {
+      axios.get('https://flix-for-fun.herokuapp.com/movies', {
+          headers: { Authorization: `Bearer ${token}`}
+      }).then(response => {
+        this.props.setMovies(response.data);
+        // this.setState({
+        //   movies: response.data
+        // });
+      }).catch(function(error) {
+          console.log(error);
+      });
+  }
+
+  getUser(token) {
+    let username = localStorage.getItem('user');
+    axios.get(`https://flix-for-fun.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(response => {
+      this.state.setUser(response.data);
+      // this.setState({
+      //   Username: response.data.Username,
+      //   Password: response.data.Password,
+      //   Email: response.data.Email,
+      //   Birthday: response.data.Birthday,
+      //   FavoriteMovies: response.data.FavoriteMovies
+      // });
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  onLogOut() {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      this.setState({
+          user: null
+      })
+      console.log('Logout Successful')
+      alert('Logged out successfully - Have a great day!')
+  }
   
   render() {
 
     let { movies } = this.props;
-    let { user } = this.state;
+    let { user } = this.props;
+
     // If the state isn't initialized, this will throw on runtime before the data is initially loaded
     // const { movies, user } = this.state;
 
@@ -104,10 +124,6 @@ class MainView extends React.Component {
         // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
         return <MoviesList movies={movies}/>
-        // movies.map(m => 
-        //   <Col md={3}>
-        //     <MovieCard key={m._id} movie={m}/>
-        //   </Col>)
         }}/>
         <Row className="register justify-content-md-center">
           <Col>
@@ -116,7 +132,7 @@ class MainView extends React.Component {
         </Row>
         <Row className="movie-detail justify-content-md-center">
           <Col md={8}>
-            <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/> }/>
+            <Route path="/movies/:movieId" component={MovieView} />
           </Col>
         </Row>
         <Row className="director justify-content-md-center">
@@ -135,12 +151,11 @@ class MainView extends React.Component {
             }/>
           </Col>
         </Row>
-        <Route path="/users/:Username" render={({history}) => { return (
-          <Row className="profile justify-content-md-center">
-            <Col md={4}>
-              <ProfileView history={history} user={user} movies={movies} />
-            </Col>
-          </Row>) }}/>
+        <Row className="profile justify-content-md-center">
+          <Col md={4}>
+            <Route path="/users/:Username" component={ProfileView}/>
+          </Col>
+        </Row>
       </div>
     </Router>
     );
@@ -148,7 +163,10 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { 
+    movies: state.movies,
+    user: state.user
+  };
 }
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);

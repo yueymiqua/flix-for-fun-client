@@ -1,20 +1,18 @@
 import axios from 'axios';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './profile-view.scss';
 
-export class ProfileView extends React.Component {
+class ProfileView extends React.Component {
 
   constructor(){
     super();
     this.state={
-      Username: null,
-      Password: null,
-      Email: null,
-      Birthday: null,
-      FavoriteMovies: [],
       showUpdateButton: false,
       showConfirmDeleteButton: false
     };
@@ -37,11 +35,13 @@ export class ProfileView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     }).then(response => {
       this.setState({
-        Username: response.data.Username,
-        Password: response.data.Password,
-        Email: response.data.Email,
-        Birthday: response.data.Birthday,
-        FavoriteMovies: response.data.FavoriteMovies
+        user: {
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthday: response.data.Birthday,
+          FavoriteMovies: response.data.FavoriteMovies
+        }
       });
     }).catch(error => {
       console.log(error);
@@ -101,7 +101,7 @@ export class ProfileView extends React.Component {
   }
 
   changeVisibleButtons(){
-    const {showUpdateButton} = this.state;
+    let {showUpdateButton} = this.state;
     if(!showUpdateButton){
       this.setState({
         showUpdateButton: true
@@ -115,14 +115,14 @@ export class ProfileView extends React.Component {
   }
 
   changeDeleteButtonVisibility(){
-    const {showConfirmDeleteButton} = this.state;
+    let showConfirmDeleteButton = this.state;
     this.setState({
       showConfirmDeleteButton: true
     });
   }
 
   cancelDelete(){
-    const {showConfirmDeleteButton} = this.state;
+    let {showConfirmDeleteButton} = this.state;
     this.setState({
       showConfirmDeleteButton: false
     });
@@ -145,7 +145,7 @@ export class ProfileView extends React.Component {
   }
 
   notUpdateInfo(){
-    const {showUpdateButton} = this.state;
+    let {showUpdateButton} = this.state;
     this.setState({
       showUpdateButton: false
     });
@@ -164,11 +164,29 @@ export class ProfileView extends React.Component {
       console.log(error);
     })
   }
+  
+  matchMovieWithFavoritedMovieId(mId){
+    let { movies } = this.props;
+    let array =[];
+    mId.map(movieId => {
+      movies.map(movie => {
+        if(movie._id == movieId) {
+          array.push(movie);
+        }
+      })
+    });
+    return array;
+  }
 
   render(){
 
-    const {Username, Password, Email, Birthday, FavoriteMovies, showUpdateButton, showConfirmDeleteButton} = this.state;
-    const {movies} = this.props;
+    let { user } = this.state;
+    let { showUpdateButton } = this.state;  
+    let { showConfirmDeleteButton } = this.state;
+
+    if(!user) return null;
+
+    let favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(user.FavoriteMovies);
 
     return(
       <div className="profile">
@@ -177,24 +195,25 @@ export class ProfileView extends React.Component {
           <div>
             <div className="profile-username">
               <span className="label" >Username: </span>
-              <span className="value">{Username}</span>
+              <span className="value">{user.Username}</span>
             </div>
             <div className="profile-email">
               <span className="label">Email: </span>
-              <span className="value">{Email}</span>
+              <span className="value">{user.Email}</span>
             </div>
             <div className="profile-birthday">
               <span className="label">Birthday: </span>
-              <span className="value">{Birthday}</span>
+              <span className="value">{user.Birthday}</span>
               
             </div>
-            <div className="favorite-movies">
+            <div className="favorite">
               <span className="label">Favorite Movies: </span>
-              {FavoriteMovies.map(mId => 
-                <div key={`${mId}`}>
-                  <span className="value">{mId}</span>
-                  <Button className="remove-movie" variant="danger" type="button" onClick={(e) => this.onHandleRemoveFavoriteMovie(e, mId)}>X</Button>
-                </div>)}
+              {favoriteMoviesObject.map(movieObject => 
+                <Card className="favorite-movies">
+                    <Card.Img className="favorite-movie-thumbnail" src={`${movieObject.ImagePath}`}/>
+                    <Card.Title className="favorite-movie-title">{movieObject.Title}</Card.Title>
+                    <Button className="remove-movie" variant="danger" type="button" onClick={(e) => this.onHandleRemoveFavoriteMovie(e, movieObject._id)}>Remove from Favorites</Button>
+                </Card>)}
             </div>
             <Button variant="primary" type="button" onClick={() => this.changeVisibleButtons()}>Update Information</Button>
             { !showConfirmDeleteButton
@@ -209,9 +228,9 @@ export class ProfileView extends React.Component {
         )
           
         : <div>
-            <input type="username" className="new-username" placeholder="Enter new username" value={this.state.Username} onChange={this.setUsername}></input>
+            <input type="username" className="new-username" placeholder="Enter new username" onChange={this.setUsername}></input>
             <input type="password" className="new-password" placeholder="Enter new password" onChange={this.setPassword}></input>
-            <input type="email" className="new-email" placeholder="Enter new email" value={this.state.Email} onChange={this.setEmail}></input>
+            <input type="email" className="new-email" placeholder="Enter new email" onChange={this.setEmail}></input>
             <input type="date" className="new-birthday" onChange={this.setBirthday}></input>
             <Button variant="success" type="button" onClick={(e) => this.onHandleChange(e)}>Update</Button>
             <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>
@@ -225,3 +244,8 @@ export class ProfileView extends React.Component {
   }
 }
 
+let mapStateToProps = state => {
+  return { movies: state.movies };
+}
+
+export default connect(mapStateToProps)(ProfileView);
