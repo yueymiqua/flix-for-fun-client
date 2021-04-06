@@ -2,12 +2,14 @@
 
 ![flix-for-fun-login-page](/IMG/flix-for-fun-login.PNG)
 
---
+
 ## Project-Description:
 
 This is a single-page web application created to allow registered/logged-in users to discover new movies and find related information on them. This project builds the client-side of the application using the React framework combined with Redux to pass down required props from the store to the class/functional components that need it. Users are able to use the provided filter searchbar to filter through the list of available movies fetched from the online database. Users will be able to find movie information such as title, description, the genre info, and the director info. The genre info will give information on the name of the genre and the description of that genre. The director info will give information on the director's name, biography, date of birth, and date of death(if applicable). Users will be allowed to add the movies they are interested in to their 'Favorites-List" from the view page of each individual movie. Once added, the "add-to-favorite" button will show that it is already added and persists when the page is refreshedor later visited. They will also be allowed to update their existing information, or delete their existing profile. Each RESTful API request is checked with JWT token for authorization each time the user wants to navigate to the certain page or perform a certain CRUD action. Proptypes are also used to check that the correct prop-types has been passed from store to component. 
 
---
+![flix-for-fun-main-page](/IMG/flix-for-fun-main-page.PNG)
+
+
 ## Ways to get the Project Running:
 
 1. Visit the the github repository "https://github.com/yueymiqua/flix-for-fun-client"
@@ -19,7 +21,7 @@ This is a single-page web application created to allow registered/logged-in user
 7. If you are a new user, register an account and you will be required to login via the login page once profile is create.
 8. Login and happy flix surfing!
 
---
+
 ## Project Endpoints:
 
 ### Navigable Endpoints: 
@@ -35,7 +37,7 @@ This is a single-page web application created to allow registered/logged-in user
  - "/users": getting a list of all users
  - "/users/:Username/Movies/:MovieID": adding/deleting a movie to Favorites List
 
---
+
 ## Project Dependancies:
 
 ### Local-Depandancies:
@@ -57,7 +59,7 @@ This is a single-page web application created to allow registered/logged-in user
 "babel-preset-react": "^6.24.1",
 "sass": "^1.32.8"
 
---
+
 ## Which API the project uses:  
 
 **Full server-side project can be found in the other repository "https://github.com/yueymiqua/flix-for-fun"**
