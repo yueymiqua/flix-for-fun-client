@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -229,3 +230,33 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(ProfileView);
+
+ProfileView.propTypes = {
+  movies: PropTypes.shape({
+    movie: PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired
+      }),
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        Birth: PropTypes.string.isRequired,
+        Death: PropTypes.string
+        }),
+      }),
+    }),
+  user: PropTypes.shape({
+    FavoriteMovies: PropTypes.array,
+    Username: PropTypes.string,
+    Password: PropTypes.string,
+    Email: PropTypes.string,
+    Birthday: PropTypes.string
+  }),
+  showUpdateButton: PropTypes.bool,
+  showConfirmDeleteButton: PropTypes.bool,
+  favoriteMoviesObject: PropTypes.array
+};

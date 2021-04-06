@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Row from 'react-bootstrap/Row'; // Row from React-Bootstrap
-import Col from 'react-bootstrap/Col'; // Column from React-Bootstrap
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import { connect } from 'react-redux';
@@ -14,7 +14,6 @@ import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
-// import { MovieCard } from '../movie-card/movie-card';
 import  MovieView from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -97,10 +96,6 @@ class MainView extends React.Component {
     let { movies } = this.props;
     let { user } = this.props;
 
-    // If the state isn't initialized, this will throw on runtime before the data is initially loaded
-    // const { movies, user } = this.state;
-
-    // Before the movies have been loaded
     if (!movies) return <div className="main-view"/>;
 
     return (
@@ -167,3 +162,30 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+
+MainView.propTypes = {
+  movies: PropTypes.shape({
+    movie: PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+      Genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired
+      }),
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        Birth: PropTypes.string.isRequired,
+        Death: PropTypes.string
+        }),
+      }),
+    }),
+  user: PropTypes.shape({
+    FavoriteMovies: PropTypes.array,
+    Username: PropTypes.string,
+    Password: PropTypes.string,
+    Email: PropTypes.string,
+    Birthday: PropTypes.string
+  }),
+};

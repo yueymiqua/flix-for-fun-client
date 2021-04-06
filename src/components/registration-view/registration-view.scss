@@ -1,8 +1,9 @@
+$secondary-color: #cc0066;
+
 .registration-form {
     text-align: center;
 }
 
-.registration-span {
-    font-size: 20px;
-    color: #cc0066
+.go-to-login-button {
+    background: $secondary-color;
 }

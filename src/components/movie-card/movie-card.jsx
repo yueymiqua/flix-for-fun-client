@@ -8,6 +8,11 @@ import { Link } from 'react-router-dom';
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
+
+  onMovieCardClick(){
+    const { movie } = this.props;
+    window.location.href = `/movies/${movie._id}`;
+  }
   
   render(){
     // This is given to the <MovieCard/> component by the outer world,
@@ -22,7 +27,7 @@ export class MovieCard extends React.Component {
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
-            <Button variant="link">See Movie Details</Button>
+            <Button variant="link" onClick={() => this.onMovieCardClick()}>See Movie Details</Button>
           </Link>
         </Card.Body>
       </Card>

@@ -15,18 +15,15 @@ button {
   text-align: center;
 }
 
-.login-span {
-  font-size: 20px;
-  color: #cc0066;
-  font-weight: 500;
+.go-to-registration-button {
+  background: #cc0066;
 }
 .registration-form {
   text-align: center;
 }
 
-.registration-span {
-  font-size: 20px;
-  color: #cc0066;
+.go-to-login-button {
+  background: #cc0066;
 }
 .movie-view {
   margin: 0 auto;
@@ -74,6 +71,11 @@ button {
   height: auto;
   margin: 0 auto;
   text-align: center;
+}
+body {
+  background-image: url("/movies wallpaper.a16d3aaf.jpg");
+  background-position: top;
+  background-size: cover;
 }
 .app-container {
   color: steelblue;

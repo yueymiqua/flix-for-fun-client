@@ -27,22 +27,19 @@ export function LoginView(props) {
 
   return (
     <Form className="login-form justify-content-md-center">
-      <h1>User Login Page</h1>
+      <h1>Login to Flix-For-Fun!</h1>
       <Form.Label>
-        Username:
         <input type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
       </Form.Label>
       <br></br>
       <Form.Label>
-        Password:
         <input type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} />
       </Form.Label>
       <br></br>
       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
       <br></br>
-      <span className="login-span">New User?</span>
       <Link to="/register">
-        <Button variant="secondary" type="button">Go to Registration Page</Button>
+        <Button className="go-to-registration-button" variant="secondary" type="button">New User? Go to Registration Page!</Button>
       </Link>
     </Form>
   );

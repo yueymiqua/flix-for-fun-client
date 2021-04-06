@@ -13,70 +13,72 @@ class MovieView extends React.Component{
     super();
     this.state={
       favorited: false
-  };
-}
+    };
+  }
 
-getUserData(movie) {
-  if(!movie) return;
-  let token = localStorage.getItem('token');
-  let username = localStorage.getItem('user');
-  axios.get(`https://flix-for-fun.herokuapp.com/users/${username}`, {
-    headers: { Authorization: `Bearer ${token}`}
-  }).then((response) => {
-    response.data.FavoriteMovies.map(m => {
+  checkIfMovieIsFavorited(movie, user) {
+    if(!user || !movie) return;
+    console.log('im here');
+    user.FavoriteMovies.forEach(m => {
       if(m === movie._id){
         return this.setState({
           favorited: true
         });
       };
     })
-  }).catch((error) => {
-    console.log(error);
-  });
-}
+  }
 
-addToFavoriteListAndshowAlreadyAddedButton(e, movie){
-  e.preventDefault();
-  let token = localStorage.getItem('token');
-  let username = localStorage.getItem('user');
-  let movieId = movie._id
-  axios.post(`https://flix-for-fun.herokuapp.com/users/${username}/Movies/${movieId}`, {
-    headers: { Authorization: `Bearer ${token}`}
-  }).then(() => {
-    this.setState({
-      favorited: true
+  addToFavoriteListAndshowAlreadyAddedButton(e, movie){
+    e.preventDefault();
+    let token = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+    let movieId = movie._id;
+    let { user } = this.props;
+    axios.post(`https://flix-for-fun.herokuapp.com/users/${username}/Movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(() => {
+      console.log(user.FavoriteMovies)
+      this.setState({
+        favorited: true
+      });
+    }).catch(error => {
+      console.log(error);
     });
-    // window.location.reload();
-  }).catch(error => {
-    console.log(error);
-  });
-}
+  }
 
-removeFromFavoriteListandShowAddToFavoriteButton(e, movie){
-  e.preventDefault();
-  let token = localStorage.getItem('token');
-  let username = localStorage.getItem('user');
-  let movieId = movie._id
-  axios.delete(`https://flix-for-fun.herokuapp.com/users/${username}/Movies/${movieId}`, {
-    headers: { Authorization: `Bearer ${token}`}
-  }).then(() => {
-    this.setState({
-      favorited: false
+  removeFromFavoriteListandShowAddToFavoriteButton(e, movie){
+    e.preventDefault();
+    let token = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+    let movieId = movie._id
+    axios.delete(`https://flix-for-fun.herokuapp.com/users/${username}/Movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    }).then(() => {
+      this.setState({
+        favorited: false
+      });
+    }).catch(error => {
+      console.log(error);
     });
-    // window.location.reload();
-  }).catch(error => {
-    console.log(error);
-  });
-}
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.movie && this.props.movie !== prevProps.movie || 
+      this.props.user && this.props.user !== prevProps.user) {
+        this.checkIfMovieIsFavorited(this.props.movie, this.props.user);
+      }
+  }
 
   render(){
     
-    let { movie } = this.props;
-    let { favorited } = this.state;
+    let { movie, user } = this.props;
+    let {favorited} = this.state;
 
-    this.getUserData(movie);
-    
+    console.log(movie);
+    console.log(user);
+
     if(!movie) return null
+
       return (
         <div className="movie-view">
           <img className="movie-poster" src={movie.ImagePath}/>
@@ -132,7 +134,35 @@ MovieView.propTypes = {
 };
 
 let mapStateToProps = (state, ownProps) => {
-  return { movie:state.movies.find(m => m._id === ownProps.match.params.movieId) };
+  return { 
+    movie:state.movies.find(m => m._id === ownProps.match.params.movieId), 
+    user:state.user };
 }
 
 export default connect(mapStateToProps)(MovieView);
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string
+      }),
+    }),
+  user: PropTypes.shape({
+    FavoriteMovies: PropTypes.array,
+    Username: PropTypes.string,
+    Password: PropTypes.string,
+    Email: PropTypes.string,
+    Birthday: PropTypes.string
+  }),
+  favorited: PropTypes.bool
+};
