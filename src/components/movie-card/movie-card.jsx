@@ -23,11 +23,11 @@ export class MovieCard extends React.Component {
     return( 
       <Card>
       <Card.Img variant="top" src={movie.ImagePath}/>
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
+        <Card.Body className="card-body">
+          <Card.Title className="movie-title">{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
-            <Button variant="link" onClick={() => this.onMovieCardClick()}>See Movie Details</Button>
+            <Button className="movie-details-button" variant="link" onClick={() => this.onMovieCardClick()}><strong>See Movie Details</strong></Button>
           </Link>
         </Card.Body>
       </Card>

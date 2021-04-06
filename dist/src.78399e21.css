@@ -1,3 +1,24 @@
+.card-body {
+  background-color: #1d1d44;
+  color: #cc0066;
+}
+
+.movie-details-button {
+  text-align: center;
+  margin: 0 auto;
+  color: #cc0066;
+  text-decoration: underline;
+}
+
+.movie-title {
+  color: white;
+}
+body {
+  background-image: url("/movies wallpaper.a16d3aaf.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
 label {
   font-size: 20px;
 }
@@ -110,10 +131,10 @@ button {
   margin: 0 auto;
   text-align: center;
 }
-body {
-  background-image: url("/movies wallpaper.a16d3aaf.jpg");
-  background-position: top;
-  background-size: cover;
+
+.new-info-span {
+  color: #cc0066;
+  font-size: 20px;
 }
 .app-container {
   color: steelblue;
