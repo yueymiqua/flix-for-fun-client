@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 
 import { Link } from 'react-router-dom';
+import './director-view.scss';
 
 export class DirectorView extends React.Component{
 
@@ -12,6 +13,7 @@ export class DirectorView extends React.Component{
   }
 
   render(){
+
     const {director} = this.props;
 
     if(!director) return null;
@@ -28,11 +30,14 @@ export class DirectorView extends React.Component{
         </div>
         <div className="director-birth">
           <span className="label">Birth: </span>
-          <span className="value">{director.Birth}</span>
+          <span className="value">{(director.Birth.split('T'))[0]}</span>
         </div>
         <div className="director-death">
           <span className="label">Death: </span>
-          <span className="value">{director.Death}</span> 
+          {director.Death===null
+          ?<span className="value"></span> 
+          :<span className="value">{(director.Death.split('T'))[0]}</span>
+          }
         </div>
         <Link to={`/`}>
           <Button variant="primary" type="button">Back to Movies</Button>
@@ -49,4 +54,8 @@ DirectorView.propTypes = {
     Birth: PropTypes.string,
     Death: PropTypes.string
   }),
+  birthFields: PropTypes.array,
+  deathFields: PropTypes.array,
+  newBirth: PropTypes.string,
+  newDeath: PropTypes.string
 };

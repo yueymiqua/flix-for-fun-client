@@ -163,26 +163,31 @@ class ProfileView extends React.Component {
     if(!user) return null;
     let favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(user.FavoriteMovies);
 
+    // Removing T00:00:00.000Z from the Birth and death date strings
+    let birthdayFields = user.Birthday.split('T');
+    let newBirth = birthdayFields[0];
+
     return(
       <div className="profile">
         { !showUpdateButton
         ? (
           <div>
-            <div className="profile-username">
-              <span className="label" >Username: </span>
-              <span className="value">{user.Username}</span>
-            </div>
-            <div className="profile-email">
-              <span className="label">Email: </span>
-              <span className="value">{user.Email}</span>
-            </div>
-            <div className="profile-birthday">
-              <span className="label">Birthday: </span>
-              <span className="value">{user.Birthday}</span>
-              
+            <div className="profile-details">
+              <div className="profile-username">
+                <span className="label" >Username: </span>
+                <span className="value">{user.Username}</span>
+              </div>
+              <div className="profile-email">
+                <span className="label">Email: </span>
+                <span className="value">{user.Email}</span>
+              </div>
+              <div className="profile-birthday">
+                <span className="label">Birthday: </span>
+                <span className="value">{newBirth}</span>
+              </div>
+              <span className="label">Favorite Movies: </span>
             </div>
             <div className="favorite">
-              <span className="label">Favorite Movies: </span>
               {!favoriteMoviesObject
               ? null
               : favoriteMoviesObject.map(movieObject => 
@@ -258,5 +263,6 @@ ProfileView.propTypes = {
   }),
   showUpdateButton: PropTypes.bool,
   showConfirmDeleteButton: PropTypes.bool,
-  favoriteMoviesObject: PropTypes.array
+  favoriteMoviesObject: PropTypes.array,
+  birthdayFields: PropTypes.array
 };

@@ -1,6 +1,13 @@
+$primary-color: steelblue;
+$secondary-color: #cc0066;
+
 .remove-movie {
     padding: 2px;
     font-size: 10px;
+}
+
+.favorite {
+    color: white
 }
 
 .favorite-movie-thumbnail{
@@ -15,4 +22,9 @@
     height: auto;
     margin: 0 auto;
     text-align: center;
+}
+
+.favorite-movies, .profile-details{
+    background-color: rgb(29, 29, 68);
+    width: 20vw;
 }

@@ -52,11 +52,31 @@ button {
 }
 
 .value {
-  color: steelblue;
+  color: white;
+}
+
+.movie-details {
+  background: #1d1d44;
+}
+
+.add-to-favorite {
+  background-color: #cc0066;
+}
+.director-view {
+  background-color: #1d1d44;
+  color: #1d1d44;
+}
+.genre-view {
+  background-color: #1d1d44;
+  color: #1d1d44;
 }
 .remove-movie {
   padding: 2px;
   font-size: 10px;
+}
+
+.favorite {
+  color: white;
 }
 
 .favorite-movie-thumbnail {
@@ -71,6 +91,11 @@ button {
   height: auto;
   margin: 0 auto;
   text-align: center;
+}
+
+.favorite-movies, .profile-details {
+  background-color: #1d1d44;
+  width: 20vw;
 }
 body {
   background-image: url("/movies wallpaper.a16d3aaf.jpg");

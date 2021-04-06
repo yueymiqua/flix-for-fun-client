@@ -28,5 +28,13 @@ $secondary-color: #cc0066;
 }
 
 .value {
-    color: $primary-color;
+    color: white;
+}
+
+.movie-details {
+    background: rgb(29, 29, 68);
+}
+
+.add-to-favorite {
+    background-color: $secondary-color;
 }

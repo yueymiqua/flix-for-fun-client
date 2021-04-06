@@ -40264,7 +40264,6 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       if (!user || !movie) return;
-      console.log('im here');
       user.FavoriteMovies.forEach(function (m) {
         if (m === movie._id) {
           return _this2.setState({
@@ -40291,8 +40290,6 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function () {
-        console.log(user.FavoriteMovies);
-
         _this3.setState({
           favorited: true
         });
@@ -40338,8 +40335,6 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           movie = _this$props.movie,
           user = _this$props.user;
       var favorited = this.state.favorited;
-      console.log(movie);
-      console.log(user);
       if (!movie) return null;
       return _react.default.createElement("div", {
         className: "movie-view"
@@ -40347,6 +40342,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "movie-poster",
         src: movie.ImagePath
       }), _react.default.createElement("div", {
+        className: "movie-details"
+      }, _react.default.createElement("div", {
         className: "image-poster"
       }, _react.default.createElement("span", {
         className: "value"
@@ -40369,7 +40366,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director.Name)), !favorited ? _react.default.createElement(_Button.default, {
-        variant: "success",
+        className: "add-to-favorite",
+        variant: "primary",
         type: "button",
         onClick: function onClick(e) {
           return _this5.addToFavoriteListAndshowAlreadyAddedButton(e, movie);
@@ -40393,7 +40391,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "primary",
         type: "button"
-      }, "Back")));
+      }, "Back"))));
     }
   }]);
 
@@ -40455,7 +40453,12 @@ MovieView.propTypes = {
   }),
   favorited: _propTypes.default.bool
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"../node_modules/react-redux/es/index.js","./movie-view.scss":"components/movie-view/movie-view.scss","axios":"../node_modules/axios/index.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"../node_modules/react-redux/es/index.js","./movie-view.scss":"components/movie-view/movie-view.scss","axios":"../node_modules/axios/index.js"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40470,6 +40473,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _reactRouterDom = require("react-router-dom");
+
+require("./director-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40535,13 +40540,15 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Birth: "), _react.default.createElement("span", {
         className: "value"
-      }, director.Birth)), _react.default.createElement("div", {
+      }, director.Birth.split('T')[0])), _react.default.createElement("div", {
         className: "director-death"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Death: "), _react.default.createElement("span", {
+      }, "Death: "), director.Death === null ? _react.default.createElement("span", {
         className: "value"
-      }, director.Death)), _react.default.createElement(_reactRouterDom.Link, {
+      }) : _react.default.createElement("span", {
+        className: "value"
+      }, director.Death.split('T')[0])), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "primary",
@@ -40560,9 +40567,18 @@ DirectorView.propTypes = {
     Bio: _propTypes.default.string,
     Birth: _propTypes.default.string,
     Death: _propTypes.default.string
-  })
+  }),
+  birthFields: _propTypes.default.array,
+  deathFields: _propTypes.default.array,
+  newBirth: _propTypes.default.string,
+  newDeath: _propTypes.default.string
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40577,6 +40593,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _reactRouterDom = require("react-router-dom");
+
+require("./genre-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40653,7 +40671,7 @@ GenreView.propTypes = {
     Description: _propTypes.default.string
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -40899,10 +40917,15 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var showUpdateButton = this.state.showUpdateButton;
       var showConfirmDeleteButton = this.state.showConfirmDeleteButton;
       if (!user) return null;
-      var favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(user.FavoriteMovies);
+      var favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(user.FavoriteMovies); // Removing T00:00:00.000Z from the Birth and death date strings
+
+      var birthdayFields = user.Birthday.split('T');
+      var newBirth = birthdayFields[0];
       return _react.default.createElement("div", {
         className: "profile"
       }, !showUpdateButton ? _react.default.createElement("div", null, _react.default.createElement("div", {
+        className: "profile-details"
+      }, _react.default.createElement("div", {
         className: "profile-username"
       }, _react.default.createElement("span", {
         className: "label"
@@ -40920,11 +40943,11 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Birthday: "), _react.default.createElement("span", {
         className: "value"
-      }, user.Birthday)), _react.default.createElement("div", {
-        className: "favorite"
-      }, _react.default.createElement("span", {
+      }, newBirth)), _react.default.createElement("span", {
         className: "label"
-      }, "Favorite Movies: "), !favoriteMoviesObject ? null : favoriteMoviesObject.map(function (movieObject) {
+      }, "Favorite Movies: ")), _react.default.createElement("div", {
+        className: "favorite"
+      }, !favoriteMoviesObject ? null : favoriteMoviesObject.map(function (movieObject) {
         return _react.default.createElement(_Card.default, {
           className: "favorite-movies"
         }, _react.default.createElement(_Card.default.Img, {
@@ -41044,7 +41067,8 @@ ProfileView.propTypes = {
   }),
   showUpdateButton: _propTypes.default.bool,
   showConfirmDeleteButton: _propTypes.default.bool,
-  favoriteMoviesObject: _propTypes.default.array
+  favoriteMoviesObject: _propTypes.default.array,
+  birthdayFields: _propTypes.default.array
 };
 },{"axios":"../node_modules/axios/index.js","react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-redux":"../node_modules/react-redux/es/index.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/main-view/main-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
