@@ -27,7 +27,7 @@ export function LoginView(props) {
 
   return (
     <Form className="login-form justify-content-md-center">
-      <h1>Login to Flix-For-Fun!</h1>
+      <h1 className="login-title">Login to Flix-For-Fun!</h1>
       <Form.Label>
         <input type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
       </Form.Label>

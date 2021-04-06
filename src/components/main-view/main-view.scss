@@ -1,5 +1,11 @@
-// body {
-//     background-image: url("../../../IMG/movies\ wallpaper.jpg");
-//     background-position:top;
-//     background-size: cover;
-// }
+$primary-color:rgb(29, 29, 68);
+$secondary-color: #cc0066;
+
+.nav-link {
+    display: inline-block;
+    background-color: $secondary-color;
+}
+
+.view-profile-button {
+    background-color: $secondary-color;
+}

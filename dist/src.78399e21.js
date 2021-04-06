@@ -40047,7 +40047,9 @@ function LoginView(props) {
 
   return _react.default.createElement(_Form.default, {
     className: "login-form justify-content-md-center"
-  }, _react.default.createElement("h1", null, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+  }, _react.default.createElement("h1", {
+    className: "login-title"
+  }, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
     type: "text",
     placeholder: "Enter username",
     value: username,
@@ -41269,10 +41271,17 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "primary",
         type: "button",
+        className: "view-profile-button",
         onClick: function onClick(user) {
           return _this4.onProfileView(user);
         }
-      }, "View Profile"))) : null, _react.default.createElement(_reactRouterDom.Route, {
+      }, "View Profile")), _react.default.createElement(_Button.default, {
+        variant: "primary",
+        type: "button",
+        className: "nav-link about-creator",
+        href: "https://yueymiqua.github.io/website-portfolio/",
+        target: "_blank"
+      }, "About App Creator")) : null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {

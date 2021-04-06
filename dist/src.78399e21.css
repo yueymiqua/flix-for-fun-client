@@ -42,6 +42,10 @@ button {
 .go-to-registration-button {
   background: #cc0066;
 }
+
+.login-title {
+  color: #cc0066;
+}
 .registration-form {
   width: 35vw;
   text-align: center;
@@ -135,6 +139,14 @@ button {
 .new-info-span {
   color: #cc0066;
   font-size: 20px;
+}
+.nav-link {
+  display: inline-block;
+  background-color: #cc0066;
+}
+
+.view-profile-button {
+  background-color: #cc0066;
 }
 .app-container {
   color: steelblue;
