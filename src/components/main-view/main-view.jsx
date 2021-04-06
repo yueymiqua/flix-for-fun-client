@@ -164,7 +164,7 @@ let mapStateToProps = state => {
 export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
 
 MainView.propTypes = {
-  movies: PropTypes.shape({
+  movies: PropTypes.arrayOf(PropTypes.shape({
     movie: PropTypes.shape({
       Title: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
@@ -180,7 +180,7 @@ MainView.propTypes = {
         Death: PropTypes.string
         }),
       }),
-    }),
+    })),
   user: PropTypes.shape({
     FavoriteMovies: PropTypes.array,
     Username: PropTypes.string,

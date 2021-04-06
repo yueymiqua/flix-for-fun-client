@@ -1,4 +1,4 @@
-$primary-color: steelblue;
+$primary-color:rgb(29, 29, 68);
 $secondary-color: #cc0066;
 
 .remove-movie {
@@ -24,7 +24,14 @@ $secondary-color: #cc0066;
     text-align: center;
 }
 
-.favorite-movies, .profile-details{
+.favorite-movies, .profile-details, .update-profile{
+    margin: 0 auto;
+    text-align: center;
     background-color: rgb(29, 29, 68);
     width: 20vw;
+}
+
+.discover-movies {
+    margin: 0 auto;
+    text-align: center;
 }

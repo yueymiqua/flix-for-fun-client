@@ -12,14 +12,20 @@ button {
 }
 
 .login-form {
+  width: 35vw;
   text-align: center;
+  margin: 0 auto;
+  background-color: #1d1d44;
 }
 
 .go-to-registration-button {
   background: #cc0066;
 }
 .registration-form {
+  width: 35vw;
   text-align: center;
+  margin: 0 auto;
+  background-color: #1d1d44;
 }
 
 .go-to-login-button {
@@ -93,9 +99,16 @@ button {
   text-align: center;
 }
 
-.favorite-movies, .profile-details {
+.favorite-movies, .profile-details, .update-profile {
+  margin: 0 auto;
+  text-align: center;
   background-color: #1d1d44;
   width: 20vw;
+}
+
+.discover-movies {
+  margin: 0 auto;
+  text-align: center;
 }
 body {
   background-image: url("/movies wallpaper.a16d3aaf.jpg");

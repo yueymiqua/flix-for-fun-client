@@ -33,7 +33,7 @@ function MoviesList(props) {
 export default connect(mapStateToProps)(MoviesList);
 
 MoviesList.propTypes = {
-    movies: PropTypes.shape({
+    movies: PropTypes.arrayOf(PropTypes.shape({
         movie: PropTypes.shape({
           Title: PropTypes.string.isRequired,
           Description: PropTypes.string.isRequired,
@@ -49,7 +49,7 @@ MoviesList.propTypes = {
             Death: PropTypes.string
             }),
           }),
-        }),
+        })),
       visibilityFilter: PropTypes.string,
       filteredMovies: PropTypes.array
   };

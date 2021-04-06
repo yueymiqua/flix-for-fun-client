@@ -1,7 +1,12 @@
+$primary-color:rgb(29, 29, 68);
 $secondary-color: #cc0066;
 
+
 .registration-form {
+    width: 35vw;
     text-align: center;
+    margin: 0 auto;
+    background-color: $primary-color;
 }
 
 .go-to-login-button {

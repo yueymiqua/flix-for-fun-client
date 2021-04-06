@@ -39951,7 +39951,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps)(MoviesList);
 
 exports.default = _default;
 MoviesList.propTypes = {
-  movies: _propTypes.default.shape({
+  movies: _propTypes.default.arrayOf(_propTypes.default.shape({
     movie: _propTypes.default.shape({
       Title: _propTypes.default.string.isRequired,
       Description: _propTypes.default.string.isRequired,
@@ -39967,7 +39967,7 @@ MoviesList.propTypes = {
         Death: _propTypes.default.string
       })
     })
-  }),
+  })),
   visibilityFilter: _propTypes.default.string,
   filteredMovies: _propTypes.default.array
 };
@@ -40834,7 +40834,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "changeDeleteButtonVisibility",
     value: function changeDeleteButtonVisibility() {
-      var showConfirmDeleteButton = this.state;
       this.setState({
         showConfirmDeleteButton: true
       });
@@ -40842,7 +40841,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "cancelDelete",
     value: function cancelDelete() {
-      var showConfirmDeleteButton = this.state.showConfirmDeleteButton;
       this.setState({
         showConfirmDeleteButton: false
       });
@@ -40870,7 +40868,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "notUpdateInfo",
     value: function notUpdateInfo() {
-      var showUpdateButton = this.state.showUpdateButton;
       this.setState({
         showUpdateButton: false
       });
@@ -40987,7 +40984,11 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.cancelDelete();
         }
-      }, "CANCEL"))) : _react.default.createElement("div", null, _react.default.createElement("input", {
+      }, "CANCEL"))) : _react.default.createElement("div", {
+        className: "update-profile"
+      }, _react.default.createElement("span", {
+        className: "new-info-span"
+      }, "Enter New Profile Information"), _react.default.createElement("input", {
         type: "username",
         className: "new-username",
         placeholder: "Enter new username",
@@ -41018,12 +41019,15 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this3.notUpdateInfo();
         }
-      }, "Cancel")), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Cancel")), _react.default.createElement("div", {
+        className: "discover-movies"
+      }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
+        className: "discover-movies-button",
         variant: "primary",
         type: "button"
-      }, "Discover More Movies!")));
+      }, "Discover More Movies!"))));
     }
   }]);
 
@@ -41354,7 +41358,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, {
 
 exports.default = _default;
 MainView.propTypes = {
-  movies: _propTypes.default.shape({
+  movies: _propTypes.default.arrayOf(_propTypes.default.shape({
     movie: _propTypes.default.shape({
       Title: _propTypes.default.string.isRequired,
       Description: _propTypes.default.string.isRequired,
@@ -41370,7 +41374,7 @@ MainView.propTypes = {
         Death: _propTypes.default.string
       })
     })
-  }),
+  })),
   user: _propTypes.default.shape({
     FavoriteMovies: _propTypes.default.array,
     Username: _propTypes.default.string,

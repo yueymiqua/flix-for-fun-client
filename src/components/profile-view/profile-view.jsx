@@ -90,14 +90,12 @@ class ProfileView extends React.Component {
   }
 
   changeDeleteButtonVisibility(){
-    let showConfirmDeleteButton = this.state;
     this.setState({
       showConfirmDeleteButton: true
     });
   }
 
   cancelDelete(){
-    let {showConfirmDeleteButton} = this.state;
     this.setState({
       showConfirmDeleteButton: false
     });
@@ -120,7 +118,6 @@ class ProfileView extends React.Component {
   }
 
   notUpdateInfo(){
-    let {showUpdateButton} = this.state;
     this.setState({
       showUpdateButton: false
     });
@@ -210,18 +207,21 @@ class ProfileView extends React.Component {
           </div>
         )
           
-        : <div>
+        : <div className="update-profile">
+            <span className="new-info-span">Enter New Profile Information</span>
             <input type="username" className="new-username" placeholder="Enter new username" onChange={this.setUsername}></input>
             <input type="password" className="new-password" placeholder="Enter new password" onChange={this.setPassword}></input>
             <input type="email" className="new-email" placeholder="Enter new email" onChange={this.setEmail}></input>
             <input type="date" className="new-birthday" onChange={this.setBirthday}></input>
             <Button variant="success" type="button" onClick={(e) => this.onHandleChange(e)}>Update</Button>
-            <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>
+            <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
           </div>
         }
-        <Link to={`/`}>
-          <Button variant="primary" type="button">Discover More Movies!</Button>
-        </Link>
+        <div className="discover-movies">
+          <Link to={`/`}>
+            <Button className="discover-movies-button" variant="primary" type="button">Discover More Movies!</Button>
+          </Link>
+        </div>
       </div>
     )
   }
