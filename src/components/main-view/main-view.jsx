@@ -25,10 +25,7 @@ class MainView extends React.Component {
 
   constructor(){
     super();
-      this.state = {
-        movies: [],
-        user: {}
-      };
+      this.state = {};
   }
 
   componentDidMount() {
@@ -88,14 +85,15 @@ class MainView extends React.Component {
   }
 
   onProfileView(user){
-    window.location.href = `/users/${user.Username}`;
+    let username = localStorage.getItem('user');
+    window.location.href = `/users/${username}`;
   }
   
   render() {
 
     let { movies } = this.props;
     let { user } = this.props;
-
+    let username = localStorage.getItem('user');
     if (!movies) return <div className="main-view"/>;
 
     return (
@@ -145,7 +143,7 @@ class MainView extends React.Component {
         </Row>
         <Row className="profile justify-content-md-center">
           <Col md={4}>
-            <Route path="/users/:Username" component={ProfileView}/>
+            <Route path={`/users/${username}`} component={ProfileView}/>
           </Col>
         </Row>
       </div>

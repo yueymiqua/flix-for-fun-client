@@ -41045,7 +41045,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps)(ProfileView);
 
 exports.default = _default;
 ProfileView.propTypes = {
-  movies: _propTypes.default.shape({
+  movies: _propTypes.default.arrayOf(_propTypes.default.shape({
     movie: _propTypes.default.shape({
       Title: _propTypes.default.string.isRequired,
       Description: _propTypes.default.string.isRequired,
@@ -41061,7 +41061,7 @@ ProfileView.propTypes = {
         Death: _propTypes.default.string
       })
     })
-  }),
+  })),
   user: _propTypes.default.shape({
     FavoriteMovies: _propTypes.default.array,
     Username: _propTypes.default.string,
@@ -41156,10 +41156,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, MainView);
 
     _this = _super.call(this);
-    _this.state = {
-      movies: [],
-      user: {}
-    };
+    _this.state = {};
     return _this;
   }
 
@@ -41238,7 +41235,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onProfileView",
     value: function onProfileView(user) {
-      window.location.href = "/users/".concat(user.Username);
+      var username = localStorage.getItem('user');
+      window.location.href = "/users/".concat(username);
     }
   }, {
     key: "render",
@@ -41247,6 +41245,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       var movies = this.props.movies;
       var user = this.props.user;
+      var username = localStorage.getItem('user');
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
@@ -41335,7 +41334,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Col.default, {
         md: 4
       }, _react.default.createElement(_reactRouterDom.Route, {
-        path: "/users/:Username",
+        path: "/users/".concat(username),
         component: _profileView.default
       })))));
     }
