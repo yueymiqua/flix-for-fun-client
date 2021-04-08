@@ -1,5 +1,4 @@
-$primary-color:rgb(29, 29, 68);
-$secondary-color: #cc0066;
+@import '../main-view/flix-for-fun-styles.scss';
 
 .card-body {
     background-color: $primary-color;
@@ -9,7 +8,7 @@ $secondary-color: #cc0066;
 .movie-details-button {
     text-align: center;
     margin: 0 auto;
-    color: $secondary-color;
+    color: white;
     text-decoration: underline;
 }
 

@@ -27,7 +27,7 @@ export class GenreView extends React.Component{
                   <span className="value">{genre.Description}</span>
                 </div>        
                 <Link to={`/`}>
-                  <Button variant="primary" type="button">Back to Movies</Button> 
+                  <Button variant="default" className="inverse-custom-button" type="button">Back to Movies</Button> 
                 </Link>
             </div>
         )

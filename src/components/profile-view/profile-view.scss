@@ -1,5 +1,4 @@
-$primary-color:rgb(29, 29, 68);
-$secondary-color: #cc0066;
+@import '../main-view/flix-for-fun-styles.scss';
 
 .remove-movie {
     padding: 2px;
@@ -39,4 +38,8 @@ $secondary-color: #cc0066;
 .new-info-span {
     color: $secondary-color;
     font-size: 20px;
+}
+
+.label, .value, .remove-movie {
+    font-size: 17px;
 }

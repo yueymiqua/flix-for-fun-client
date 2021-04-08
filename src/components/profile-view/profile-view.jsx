@@ -18,63 +18,7 @@ class ProfileView extends React.Component {
       showUpdateButton: false,
       showConfirmDeleteButton: false,
     };
-      // this.setUsername = this.setUsername.bind(this);
-      // this.setPassword = this.setPassword.bind(this);
-      // this.setEmail = this.setEmail.bind(this);
-      // this.setBirthday = this.setBirthday.bind(this);
   }
-
-  // setUsername(event){
-  //   this.setState({
-  //     Username: event.target.value
-  //   });
-  // }
-
-  // setPassword(event){
-  //   this.setState({
-  //     Password: event.target.value
-  //   });
-  // }
-
-  // setEmail(event){
-  //   this.setState({
-  //     Email: event.target.value
-  //   });
-  // }
-
-  // setBirthday(event){
-  //   this.setState({
-  //     Birthday: event.target.value
-  //   });
-  // }
-
-  // onHandleChange(e){
-  //   e.preventDefault();
-  //   let token = localStorage.getItem('token');
-  //   let username = localStorage.getItem('user');
-  //   let {Username, Password, Email, Birthday} = this.state;
-  //   axios({
-  //     method: 'put',
-  //     url: `https://flix-for-fun.herokuapp.com/users/${username}`,
-  //     headers: { Authorization: `Bearer ${token}`},
-  //     data: {
-  //       Username: Username,
-  //       Password: Password,
-  //       Email: Email,
-  //       Birthday: Birthday,
-  //     },
-  //   }).then((res) => {
-  //     this.setState({
-  //       Username: res.data.Username,
-  //       Password: res.data.Password,
-  //       Email: res.data.Email,
-  //       Birthday: res.data.Birthday,
-  //     });
-  //     this.changeVisibleButtons();
-  //     localStorage.setItem('user', this.state.Username);
-  //     window.location.reload()
-  //   });
-  // }
 
   changeVisibleButtons(){
     let {showUpdateButton} = this.state;
@@ -196,9 +140,9 @@ class ProfileView extends React.Component {
                 </Card>)
               }
             </div>
-            <Button variant="primary" type="button" onClick={() => this.changeVisibleButtons()}>Update Information</Button>
+            <Button variant="default" className="custom-button" onClick={() => this.changeVisibleButtons()}>Update Information</Button>
             { !showConfirmDeleteButton
-            ? <Button variant="warning" type="button" onClick={() => this.changeDeleteButtonVisibility()}>Delete Profile</Button>
+            ? <Button variant="danger" type="button" onClick={() => this.changeDeleteButtonVisibility()}>Delete Profile</Button>
             : <div>
                 <br></br>
                 <Button variant="danger" type="button" onClick={(e) => this.onHandleDelete(e)}>CONFIRM DELETE</Button>
@@ -208,23 +152,14 @@ class ProfileView extends React.Component {
           </div>
         )
           
-        : <div>
+        : <div className="update-profile">
             <UpdateProfileView/>
-            <Button variant="danger" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
+            <Button className="cancel-update" variant="danger" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
           </div>
-          // <div className="update-profile">
-          //   <span className="new-info-span">Enter New Profile Information</span>
-          //   <input type="username" className="new-username" placeholder="Enter new username" onChange={this.setUsername}></input>
-          //   <input type="password" className="new-password" placeholder="Enter new password" onChange={this.setPassword}></input>
-          //   <input type="email" className="new-email" placeholder="Enter new email" onChange={this.setEmail}></input>
-          //   <input type="date" className="new-birthday" onChange={this.setBirthday}></input>
-          //   <Button variant="success" type="button" onClick={(e) => this.onHandleChange(e)}>Update</Button>
-          //   <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
-          // </div>
         }
         <div className="discover-movies">
           <Link to={`/`}>
-            <Button className="discover-movies-button" variant="primary" type="button">Discover More Movies!</Button>
+            <Button className="custom-button" variant="default" type="button">Discover More Movies!</Button>
           </Link>
         </div>
       </div>

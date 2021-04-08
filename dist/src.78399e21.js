@@ -39950,7 +39950,8 @@ function MoviesList(props) {
     visibilityFilter: visibilityFilter
   }), filteredMovies.map(function (m) {
     return _react.default.createElement(_Col.default, {
-      md: 3
+      lg: 3,
+      md: 4
     }, _react.default.createElement(_movieCard.MovieCard, {
       key: m._id,
       movie: m
@@ -40444,8 +40445,8 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director.Name)), !favorited ? _react.default.createElement(_Button.default, {
-        className: "add-to-favorite",
-        variant: "primary",
+        className: "custom-button",
+        variant: "default",
         type: "button",
         onClick: function onClick(e) {
           return _this5.addToFavoriteListAndshowAlreadyAddedButton(e, movie);
@@ -40459,15 +40460,18 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Added!"), _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/directors/".concat(movie.Director.Name)
       }, _react.default.createElement(_Button.default, {
-        variant: "primary"
+        variant: "default",
+        className: "inverse-custom-button"
       }, "Director Info")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/genres/".concat(movie.Genre.Name)
       }, _react.default.createElement(_Button.default, {
-        variant: "primary"
+        variant: "default",
+        className: "inverse-custom-button"
       }, "Genre Info")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "primary",
+        variant: "default",
+        className: "custom-button",
         type: "button"
       }, "Back"))));
     }
@@ -40629,7 +40633,8 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       }, director.Death.split('T')[0])), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "primary",
+        variant: "default",
+        className: "inverse-custom-button",
         type: "button"
       }, "Back to Movies")));
     }
@@ -40733,7 +40738,8 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       }, genre.Description)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "primary",
+        variant: "default",
+        className: "inverse-custom-button",
         type: "button"
       }, "Back to Movies")));
     }
@@ -40749,7 +40755,12 @@ GenreView.propTypes = {
     Description: _propTypes.default.string
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/update-profile-view/update-profile-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/update-profile-view/update-profile-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/update-profile-view/update-profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40764,6 +40775,8 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 var _axios = _interopRequireDefault(require("axios"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
+
+require("./update-profile-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40868,7 +40881,9 @@ function UpdateProfileView(props) {
     className: "update-profile"
   }, _react.default.createElement("h1", {
     className: "new-info-span"
-  }, "Enter New Profile Information"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, "Enter New Profile Information"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "update-label"
+  }, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "username",
     className: "new-username",
     placeholder: "Enter new username",
@@ -40878,7 +40893,9 @@ function UpdateProfileView(props) {
     isInvalid: !!errors.username
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.username)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, errors.username)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "update-label"
+  }, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     className: "new-password",
     placeholder: "Enter new password",
@@ -40888,7 +40905,9 @@ function UpdateProfileView(props) {
     isInvalid: !!errors.password
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.password)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Email"), _react.default.createElement(_Form.default.Control, {
+  }, errors.password)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "update-label"
+  }, "Email"), _react.default.createElement(_Form.default.Control, {
     type: "email",
     className: "new-email",
     placeholder: "Enter new email",
@@ -40898,7 +40917,9 @@ function UpdateProfileView(props) {
     isInvalid: !!errors.email
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.email)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Birthday"), _react.default.createElement(_Form.default.Control, {
+  }, errors.email)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "update-label"
+  }, "Birthday"), _react.default.createElement(_Form.default.Control, {
     type: "date",
     className: "new-birthday",
     onChange: function onChange(e) {
@@ -40910,7 +40931,7 @@ function UpdateProfileView(props) {
     onClick: onHandleChange
   }, "Update"));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./update-profile-view.scss":"components/update-profile-view/update-profile-view.scss"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -40979,60 +41000,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       showUpdateButton: false,
       showConfirmDeleteButton: false
-    }; // this.setUsername = this.setUsername.bind(this);
-    // this.setPassword = this.setPassword.bind(this);
-    // this.setEmail = this.setEmail.bind(this);
-    // this.setBirthday = this.setBirthday.bind(this);
-
+    };
     return _this;
-  } // setUsername(event){
-  //   this.setState({
-  //     Username: event.target.value
-  //   });
-  // }
-  // setPassword(event){
-  //   this.setState({
-  //     Password: event.target.value
-  //   });
-  // }
-  // setEmail(event){
-  //   this.setState({
-  //     Email: event.target.value
-  //   });
-  // }
-  // setBirthday(event){
-  //   this.setState({
-  //     Birthday: event.target.value
-  //   });
-  // }
-  // onHandleChange(e){
-  //   e.preventDefault();
-  //   let token = localStorage.getItem('token');
-  //   let username = localStorage.getItem('user');
-  //   let {Username, Password, Email, Birthday} = this.state;
-  //   axios({
-  //     method: 'put',
-  //     url: `https://flix-for-fun.herokuapp.com/users/${username}`,
-  //     headers: { Authorization: `Bearer ${token}`},
-  //     data: {
-  //       Username: Username,
-  //       Password: Password,
-  //       Email: Email,
-  //       Birthday: Birthday,
-  //     },
-  //   }).then((res) => {
-  //     this.setState({
-  //       Username: res.data.Username,
-  //       Password: res.data.Password,
-  //       Email: res.data.Email,
-  //       Birthday: res.data.Birthday,
-  //     });
-  //     this.changeVisibleButtons();
-  //     localStorage.setItem('user', this.state.Username);
-  //     window.location.reload()
-  //   });
-  // }
-
+  }
 
   _createClass(ProfileView, [{
     key: "changeVisibleButtons",
@@ -41182,13 +41152,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           }
         }, "Remove from Favorites"));
       })), _react.default.createElement(_Button.default, {
-        variant: "primary",
-        type: "button",
+        variant: "default",
+        className: "custom-button",
         onClick: function onClick() {
           return _this2.changeVisibleButtons();
         }
       }, "Update Information"), !showConfirmDeleteButton ? _react.default.createElement(_Button.default, {
-        variant: "warning",
+        variant: "danger",
         type: "button",
         onClick: function onClick() {
           return _this2.changeDeleteButtonVisibility();
@@ -41205,28 +41175,22 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.cancelDelete();
         }
-      }, "CANCEL"))) : _react.default.createElement("div", null, _react.default.createElement(_updateProfileView.UpdateProfileView, null), _react.default.createElement(_Button.default, {
+      }, "CANCEL"))) : _react.default.createElement("div", {
+        className: "update-profile"
+      }, _react.default.createElement(_updateProfileView.UpdateProfileView, null), _react.default.createElement(_Button.default, {
+        className: "cancel-update",
         variant: "danger",
         type: "button",
         onClick: function onClick() {
           return _this2.notUpdateInfo();
         }
-      }, "Cancel")) // <div className="update-profile">
-      //   <span className="new-info-span">Enter New Profile Information</span>
-      //   <input type="username" className="new-username" placeholder="Enter new username" onChange={this.setUsername}></input>
-      //   <input type="password" className="new-password" placeholder="Enter new password" onChange={this.setPassword}></input>
-      //   <input type="email" className="new-email" placeholder="Enter new email" onChange={this.setEmail}></input>
-      //   <input type="date" className="new-birthday" onChange={this.setBirthday}></input>
-      //   <Button variant="success" type="button" onClick={(e) => this.onHandleChange(e)}>Update</Button>
-      //   <Button variant="secondary" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
-      // </div>
-      , _react.default.createElement("div", {
+      }, "Cancel")), _react.default.createElement("div", {
         className: "discover-movies"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        className: "discover-movies-button",
-        variant: "primary",
+        className: "custom-button",
+        variant: "default",
         type: "button"
       }, "Discover More Movies!"))));
     }
@@ -41455,27 +41419,33 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, user ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
+        variant: "default",
+        className: "inverse-custom-button",
+        type: "button"
+      }, "Homepage")), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/users/".concat(user.Username)
+      }, _react.default.createElement(_Button.default, {
+        variant: "default",
+        className: "custom-button",
+        type: "button",
+        onClick: function onClick(user) {
+          return _this4.onProfileView(user);
+        }
+      }, "View Profile")), _react.default.createElement(_Button.default, {
+        variant: "default",
+        className: "custom-button",
+        type: "button",
+        href: "https://yueymiqua.github.io/website-portfolio/",
+        target: "_blank"
+      }, "About App Creator"), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, _react.default.createElement(_Button.default, {
         variant: "danger",
         type: "button",
         onClick: function onClick() {
           return _this4.onLogOut();
         }
-      }, "Logout")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/users/".concat(user.Username)
-      }, _react.default.createElement(_Button.default, {
-        variant: "primary",
-        type: "button",
-        className: "view-profile-button",
-        onClick: function onClick(user) {
-          return _this4.onProfileView(user);
-        }
-      }, "View Profile")), _react.default.createElement(_Button.default, {
-        variant: "primary",
-        type: "button",
-        className: "nav-link about-creator",
-        href: "https://yueymiqua.github.io/website-portfolio/",
-        target: "_blank"
-      }, "About App Creator")) : null, _react.default.createElement(_reactRouterDom.Route, {
+      }, "Logout"))) : null, _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {

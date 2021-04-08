@@ -101,13 +101,17 @@ class MainView extends React.Component {
       <div className="main-view">
         { user
         ? <div>
+            
+            <Link to={`/`}>
+              <Button variant="default" className="inverse-custom-button" type="button">Homepage</Button>
+            </Link>
+            <Link to={`/users/${user.Username}`}>
+              <Button variant="default" className="custom-button" type="button" onClick={(user) => this.onProfileView(user)}>View Profile</Button>
+            </Link>
+              <Button variant="default"  className="custom-button" type="button" href="https://yueymiqua.github.io/website-portfolio/" target="_blank">About App Creator</Button>
             <Link to={`/`}>
               <Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button>
             </Link>
-            <Link to={`/users/${user.Username}`}>
-              <Button variant="primary" type="button" className="view-profile-button" onClick={(user) => this.onProfileView(user)}>View Profile</Button>
-            </Link>
-              <Button variant="primary" type="button" className="nav-link about-creator" href="https://yueymiqua.github.io/website-portfolio/" target="_blank">About App Creator</Button>
           </div>
         : null
         }

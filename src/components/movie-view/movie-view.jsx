@@ -94,17 +94,17 @@ class MovieView extends React.Component{
               <span className="value">{movie.Director.Name}</span>
             </div>
             {!favorited
-            ? <Button className="add-to-favorite" variant="primary" type="button" onClick={(e) => this.addToFavoriteListAndshowAlreadyAddedButton(e, movie)}>Add to Favorite</Button>
+            ? <Button className="custom-button" variant="default" type="button" onClick={(e) => this.addToFavoriteListAndshowAlreadyAddedButton(e, movie)}>Add to Favorite</Button>
             : <Button variant="secondary" type="button" onClick={(e) => this.removeFromFavoriteListandShowAddToFavoriteButton(e, movie)}>Added!</Button>
             }
             <Link to={`/movies/directors/${movie.Director.Name}`}>
-              <Button variant="primary">Director Info</Button>
+              <Button variant="default" className="inverse-custom-button">Director Info</Button>
             </Link>
             <Link to={`/movies/genres/${movie.Genre.Name}`}>
-              <Button variant="primary">Genre Info</Button>
+              <Button variant="default" className="inverse-custom-button">Genre Info</Button>
             </Link>
             <Link to={`/`}>
-              <Button variant="primary" type="button">Back</Button>
+              <Button variant="default" className="custom-button" type="button">Back</Button>
             </Link>
           </div>
         </div>

@@ -1,5 +1,4 @@
-$primary-color:rgb(29, 29, 68);
-$secondary-color: #cc0066;
+@import './flix-for-fun-styles.scss';
 
 .nav-link {
     display: inline-block;
@@ -8,4 +7,14 @@ $secondary-color: #cc0066;
 
 .view-profile-button {
     background-color: $secondary-color;
+}
+
+.custom-button {
+    color: white;
+    background: $secondary-color;
+}
+
+.inverse-custom-button {
+    color:$secondary-color;
+    background: white;
 }

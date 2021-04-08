@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 
+import './update-profile-view.scss';
+
 export function UpdateProfileView(props) {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
@@ -82,28 +84,28 @@ export function UpdateProfileView(props) {
     <Form className="update-profile">
         <h1 className="new-info-span">Enter New Profile Information</h1>
         <Form.Group>
-            <Form.Label>Username</Form.Label>
+            <Form.Label className="update-label">Username</Form.Label>
             <Form.Control type="username" className="new-username" placeholder="Enter new username" onChange={e => setField('username', e.target.value)} isInvalid={!!errors.username}/>
             <Form.Control.Feedback type='invalid'>
             { errors.username }
             </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-            <Form.Label>Password</Form.Label>
+            <Form.Label className="update-label">Password</Form.Label>
             <Form.Control type="password" className="new-password" placeholder="Enter new password" onChange={e => setField('password', e.target.value)} isInvalid={!!errors.password}/>
             <Form.Control.Feedback type='invalid'>
             { errors.password }
             </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-            <Form.Label>Email</Form.Label>
+            <Form.Label className="update-label">Email</Form.Label>
             <Form.Control type="email" className="new-email" placeholder="Enter new email" onChange={e => setField('email', e.target.value)} isInvalid={!!errors.email}/>
             <Form.Control.Feedback type='invalid'>
             { errors.email }
             </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
-            <Form.Label>Birthday</Form.Label>
+            <Form.Label className="update-label">Birthday</Form.Label>
             <Form.Control type="date" className="new-birthday" onChange={e => setField('birthday', e.target.value)}/>
         </Form.Group>
         <Button variant="success" type="button" onClick={onHandleChange}>Update</Button>
