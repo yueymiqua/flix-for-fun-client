@@ -1,5 +1,4 @@
-$primary-color:rgb(29, 29, 68);
-$secondary-color: #cc0066;
+@import '../main-view/flix-for-fun-styles.scss';
 
 body {
     background-image: url("../../../IMG/movies\ wallpaper.jpg");
@@ -27,10 +26,6 @@ button {
     background-color: $primary-color;
 }
 
-.go-to-registration-button {
-    background: $secondary-color;
-}
-
-.login-title {
+.login-title, .login-label {
     color: $secondary-color;
 }

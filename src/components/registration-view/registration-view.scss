@@ -1,6 +1,4 @@
-$primary-color:rgb(29, 29, 68);
-$secondary-color: #cc0066;
-
+@import '../main-view/flix-for-fun-styles.scss';
 
 .registration-form {
     width: 35vw;
@@ -9,6 +7,6 @@ $secondary-color: #cc0066;
     background-color: $primary-color;
 }
 
-.go-to-login-button {
-    background: $secondary-color;
+.registration-label, .registration-title {
+    color: $secondary-color;
 }

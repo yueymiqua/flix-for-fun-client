@@ -39,11 +39,7 @@ button {
   background-color: #1d1d44;
 }
 
-.go-to-registration-button {
-  background: #cc0066;
-}
-
-.login-title {
+.login-title, .login-label {
   color: #cc0066;
 }
 .registration-form {
@@ -53,8 +49,8 @@ button {
   background-color: #1d1d44;
 }
 
-.go-to-login-button {
-  background: #cc0066;
+.registration-label, .registration-title {
+  color: #cc0066;
 }
 .movie-view {
   margin: 0 auto;

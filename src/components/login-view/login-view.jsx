@@ -65,7 +65,7 @@ export function LoginView(props) {
     <Form className="login-form justify-content-md-center">
       <h1 className="login-title">Login to Flix-For-Fun!</h1>
       <Form.Group>
-        <Form.Label>Username</Form.Label>
+        <Form.Label className="login-label">Username</Form.Label>
         <Form.Control type="text" placeholder="Enter username" onChange={e => setField('username', e.target.value)} isInvalid={!!errors.username}/>
         <Form.Control.Feedback type='invalid'>
           { errors.username }
@@ -73,17 +73,17 @@ export function LoginView(props) {
       </Form.Group>
       <br></br>
       <Form.Group>
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="login-label">Password</Form.Label>
         <Form.Control type="password" placeholder="Enter password" onChange={e => setField('password', e.target.value)} isInvalid={!!errors.password} />
         <Form.Control.Feedback type='invalid'>
           { errors.password }
         </Form.Control.Feedback>
       </Form.Group>
       <br></br>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+      <Button className="custom-button" variant="default" type="submit" onClick={handleSubmit}>Submit</Button>
       <br></br>
       <Link to="/register">
-        <Button className="go-to-registration-button" variant="secondary" type="button">New User? Go to Registration Page!</Button>
+        <Button className="inverse-custom-button" variant="default" type="button">New User? Go to Registration Page!</Button>
       </Link>
     </Form>
   );

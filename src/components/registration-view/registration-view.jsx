@@ -72,9 +72,9 @@ export function RegistrationView(props) {
   
   return (
     <Form className="registration-form justify-content-md-center">
-      <h1>Sign-up For An Account</h1>
+      <h1 className="registration-title">Sign-up For An Account</h1>
       <Form.Group>
-        <Form.Label>Username</Form.Label>
+        <Form.Label className="registration-label">Username</Form.Label>
         <Form.Control type="text" placeholder="Enter new username" onChange={e => setField('username', e.target.value)} isInvalid={!!errors.username}/>
         <Form.Control.Feedback type='invalid'>
           { errors.username }
@@ -82,7 +82,7 @@ export function RegistrationView(props) {
       </Form.Group>
       <br></br>
       <Form.Group>
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="registration-label">Password</Form.Label>
         <Form.Control type="password" placeholder="Enter new password" onChange={e => setField('password', e.target.value)} isInvalid={!!errors.password}/>
         <Form.Control.Feedback type='invalid'>
           { errors.password }
@@ -90,7 +90,7 @@ export function RegistrationView(props) {
       </Form.Group>
       <br></br>
       <Form.Group>
-        <Form.Label>Email</Form.Label>
+        <Form.Label className="registration-label">Email</Form.Label>
         <Form.Control type="email"  placeholder="Enter new email" onChange={e => setField('email', e.target.value)} isInvalid={!!errors.email}/>
         <Form.Control.Feedback type='invalid'>
           { errors.email }
@@ -98,14 +98,14 @@ export function RegistrationView(props) {
       </Form.Group>
       <br></br>
       <Form.Group>
-        <Form.Label>Birthday</Form.Label>
+        <Form.Label className="registration-label">Birthday</Form.Label>
         <Form.Control type="date" onChange={e=> setField('birthday',e.target.value)}/>
       </Form.Group>
       <br></br>
-      <Button variant="primary" type="submit" onClick={handleRegister}>Register</Button>
+      <Button className="custom-button" variant="default" type="submit" onClick={handleRegister}>Register</Button>
       <br></br>
       <Link to={`/`}>
-        <Button className="go-to-login-button" variant="secondary" type="button">Existing User? Go to Login Page!</Button>
+        <Button className="inverse-custom-button" variant="default" type="button">Existing User? Go to Login Page!</Button>
       </Link>
     </Form>
   );

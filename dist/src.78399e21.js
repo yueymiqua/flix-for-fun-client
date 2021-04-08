@@ -40086,7 +40086,9 @@ function LoginView(props) {
     className: "login-form justify-content-md-center"
   }, _react.default.createElement("h1", {
     className: "login-title"
-  }, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "login-label"
+  }, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter username",
     onChange: function onChange(e) {
@@ -40095,7 +40097,9 @@ function LoginView(props) {
     isInvalid: !!errors.username
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "login-label"
+  }, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
     onChange: function onChange(e) {
@@ -40105,14 +40109,15 @@ function LoginView(props) {
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
   }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
-    variant: "primary",
+    className: "custom-button",
+    variant: "default",
     type: "submit",
     onClick: handleSubmit
   }, "Submit"), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
   }, _react.default.createElement(_Button.default, {
-    className: "go-to-registration-button",
-    variant: "secondary",
+    className: "inverse-custom-button",
+    variant: "default",
     type: "button"
   }, "New User? Go to Registration Page!")));
 }
@@ -40225,7 +40230,11 @@ function RegistrationView(props) {
 
   return _react.default.createElement(_Form.default, {
     className: "registration-form justify-content-md-center"
-  }, _react.default.createElement("h1", null, "Sign-up For An Account"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, _react.default.createElement("h1", {
+    className: "registration-title"
+  }, "Sign-up For An Account"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "registration-label"
+  }, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter new username",
     onChange: function onChange(e) {
@@ -40234,7 +40243,9 @@ function RegistrationView(props) {
     isInvalid: !!errors.username
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "registration-label"
+  }, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter new password",
     onChange: function onChange(e) {
@@ -40243,7 +40254,9 @@ function RegistrationView(props) {
     isInvalid: !!errors.password
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Email"), _react.default.createElement(_Form.default.Control, {
+  }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "registration-label"
+  }, "Email"), _react.default.createElement(_Form.default.Control, {
     type: "email",
     placeholder: "Enter new email",
     onChange: function onChange(e) {
@@ -40252,20 +40265,23 @@ function RegistrationView(props) {
     isInvalid: !!errors.email
   }), _react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.email)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Birthday"), _react.default.createElement(_Form.default.Control, {
+  }, errors.email)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    className: "registration-label"
+  }, "Birthday"), _react.default.createElement(_Form.default.Control, {
     type: "date",
     onChange: function onChange(e) {
       return setField('birthday', e.target.value);
     }
   })), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
-    variant: "primary",
+    className: "custom-button",
+    variant: "default",
     type: "submit",
     onClick: handleRegister
   }, "Register"), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_Button.default, {
-    className: "go-to-login-button",
-    variant: "secondary",
+    className: "inverse-custom-button",
+    variant: "default",
     type: "button"
   }, "Existing User? Go to Login Page!")));
 }
