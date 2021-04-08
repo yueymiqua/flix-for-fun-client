@@ -33088,7 +33088,7 @@ exports.devToolsEnhancer =
 },{"redux":"../node_modules/redux/es/redux.js"}],"../node_modules/classnames/index.js":[function(require,module,exports) {
 var define;
 /*!
-  Copyright (c) 2017 Jed Watson.
+  Copyright (c) 2018 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
@@ -33099,7 +33099,7 @@ var define;
 
 	var hasOwn = {}.hasOwnProperty;
 
-	function classNames () {
+	function classNames() {
 		var classes = [];
 
 		for (var i = 0; i < arguments.length; i++) {
@@ -33110,16 +33110,22 @@ var define;
 
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
 				}
 			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
 					}
+				} else {
+					classes.push(arg.toString());
 				}
 			}
 		}
@@ -36716,7 +36722,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 var index = _react.default.createContext || createReactContext;
 var _default = index;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"../node_modules/isarray/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@babel/runtime/helpers/esm/inheritsLoose":"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"../node_modules/prop-types/index.js","tiny-warning":"../node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"../node_modules/path-to-regexp/node_modules/isarray/index.js":[function(require,module,exports) {
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
@@ -37149,7 +37155,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":"../node_modules/isarray/index.js"}],"../node_modules/react-router/esm/react-router.js":[function(require,module,exports) {
+},{"isarray":"../node_modules/path-to-regexp/node_modules/isarray/index.js"}],"../node_modules/react-router/esm/react-router.js":[function(require,module,exports) {
 var global = arguments[3];
 "use strict";
 
@@ -40007,6 +40013,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -40020,50 +40028,82 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function LoginView(props) {
-  var _useState = (0, _react.useState)(''),
+  var _useState = (0, _react.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
-      setUsername = _useState2[1];
+      form = _useState2[0],
+      setForm = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
-      setPassword = _useState4[1];
+      errors = _useState4[0],
+      setErrors = _useState4[1];
+
+  var setField = function setField(field, value) {
+    setForm(_defineProperty({
+      username: form.username,
+      password: form.password
+    }, field, value));
+    if (!!errors[field]) setErrors(_defineProperty({
+      username: errors.username,
+      password: errors.password
+    }, field, null));
+  };
+
+  var findFormErrors = function findFormErrors() {
+    var username = form.username,
+        password = form.password;
+    var newErrors = {}; // Validating username
+
+    if (!username || username === '') newErrors.username = 'Username must not be empty';else if (username.length < 5) newErrors.username = 'Username must be more than 5 characters';else if (username.length > 30) newErrors.username = 'Username must be less than 30 characters'; // Validating password
+
+    if (!password || password === '') newErrors.password = 'Password must not be empty';else if (password.length < 5) newErrors.password = 'Password must be more than 5 characters';else if (password.length > 30) newErrors.password = 'Password must be less than 30 characters';
+    return newErrors;
+  };
 
   var handleSubmit = function handleSubmit(e) {
-    e.preventDefault(); // Send a request to server for authentication
+    e.preventDefault();
+    var newErrors = findFormErrors();
 
-    _axios.default.post('https://flix-for-fun.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    }).then(function (response) {
-      var data = response.data;
-      props.onLoggedIn(data);
-    }).catch(function (error) {
-      console.log('User not found.');
-      alert('Incorrect username/password - Please try again!');
-    });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      // Send a request to server for authentication
+      _axios.default.post('https://flix-for-fun.herokuapp.com/login', {
+        Username: form.username,
+        Password: form.password
+      }).then(function (response) {
+        var data = response.data;
+        props.onLoggedIn(data);
+      }).catch(function (error) {
+        console.log('User not found.');
+        alert('Incorrect username/password - Please try again!');
+      });
+    }
   };
 
   return _react.default.createElement(_Form.default, {
     className: "login-form justify-content-md-center"
   }, _react.default.createElement("h1", {
     className: "login-title"
-  }, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+  }, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter username",
-    value: username,
     onChange: function onChange(e) {
-      return setUsername(e.target.value);
-    }
-  })), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+      return setField('username', e.target.value);
+    },
+    isInvalid: !!errors.username
+  }), _react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
-    value: password,
     onChange: function onChange(e) {
-      return setPassword(e.target.value);
-    }
-  })), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+      return setField('password', e.target.value);
+    },
+    isInvalid: !!errors.password
+  }), _react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
     variant: "primary",
     type: "submit",
     onClick: handleSubmit
@@ -40106,6 +40146,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -40119,71 +40161,100 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function RegistrationView(props) {
-  var _useState = (0, _react.useState)(''),
+  var _useState = (0, _react.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
-      setUsername = _useState2[1];
+      form = _useState2[0],
+      setForm = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
-      setPassword = _useState4[1];
+      errors = _useState4[0],
+      setErrors = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      email = _useState6[0],
-      setEmail = _useState6[1];
+  var setField = function setField(field, value) {
+    setForm(_defineProperty({
+      username: form.username,
+      password: form.password,
+      email: form.email,
+      birthday: form.birthday
+    }, field, value));
+    if (!!errors[field]) setErrors(_defineProperty({
+      username: errors.username,
+      password: errors.password,
+      email: errors.email,
+      birthday: errors.birthday
+    }, field, null));
+  };
 
-  var _useState7 = (0, _react.useState)(''),
-      _useState8 = _slicedToArray(_useState7, 2),
-      birthday = _useState8[0],
-      setBirthday = _useState8[1];
+  var findFormErrors = function findFormErrors() {
+    var username = form.username,
+        password = form.password,
+        email = form.email;
+    var newErrors = []; // Validating username
+
+    if (!username || username === '') newErrors.username = 'Username not be empty';else if (username.length < 5) newErrors.username = 'Username must be more than 5 characters';else if (username.length > 30) newErrors.username = 'Username be less than 30 characters'; // Validating password
+
+    if (!password || password === '') newErrors.password = 'Password must not be empty';else if (password.length < 5) newErrors.password = 'Password must be more than 5 characters';else if (password.length > 30) newErrors.password = 'Password must be less than 30 characters'; // Validating email
+
+    if (!email || email === '') newErrors.email = 'Email must not be empty';else if (!email.includes('@')) newErrors.email = 'Please enter a valid email';else if (!email.includes('.')) newErrors.email = 'Please enter a valid email';
+    return newErrors;
+  };
 
   var handleRegister = function handleRegister(e) {
     e.preventDefault();
+    var newErrors = findFormErrors();
 
-    _axios.default.post('https://flix-for-fun.herokuapp.com/users', {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
-    }).then(function (response) {
-      var data = response.data;
-      console.log(data);
-      window.open('/', '_self'); // second argument '_self' is necessary so the page opens in current tab
-    }).catch(function (error) {
-      console.log('error registering the user');
-    });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+    } else {
+      _axios.default.post('https://flix-for-fun.herokuapp.com/users', {
+        Username: form.username,
+        Password: form.password,
+        Email: form.email,
+        Birthday: form.birthday
+      }).then(function (response) {
+        var data = response.data;
+        console.log(data);
+        window.open('/', '_self'); // second argument '_self' is necessary so the page opens in current tab
+      }).catch(function (error) {
+        console.log('error registering the user');
+      });
+    }
   };
 
   return _react.default.createElement(_Form.default, {
     className: "registration-form justify-content-md-center"
-  }, _react.default.createElement("h1", null, "Sign-up For An Account"), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+  }, _react.default.createElement("h1", null, "Sign-up For An Account"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter new username",
-    value: username,
     onChange: function onChange(e) {
-      return setUsername(e.target.value);
-    }
-  })), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+      return setField('username', e.target.value);
+    },
+    isInvalid: !!errors.username
+  }), _react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter new password",
-    value: password,
     onChange: function onChange(e) {
-      return setPassword(e.target.value);
-    }
-  })), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+      return setField('password', e.target.value);
+    },
+    isInvalid: !!errors.password
+  }), _react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Email"), _react.default.createElement(_Form.default.Control, {
     type: "email",
     placeholder: "Enter new email",
-    value: email,
     onChange: function onChange(e) {
-      return setEmail(e.target.value);
-    }
-  })), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Label, null, _react.default.createElement("input", {
+      return setField('email', e.target.value);
+    },
+    isInvalid: !!errors.email
+  }), _react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, errors.email)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, null, "Birthday"), _react.default.createElement(_Form.default.Control, {
     type: "date",
-    value: birthday,
     onChange: function onChange(e) {
-      return setBirthday(e.target.value);
+      return setField('birthday', e.target.value);
     }
   })), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
     variant: "primary",
@@ -41568,7 +41639,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60861" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60382" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
