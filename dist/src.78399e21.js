@@ -39948,8 +39948,9 @@ function MoviesList(props) {
     className: "movies-list justify-content-md-center"
   }, _react.default.createElement(_visibilityFilterInput.default, {
     visibilityFilter: visibilityFilter
-  }), filteredMovies.map(function (m) {
+  }), filteredMovies.map(function (m, i) {
     return _react.default.createElement(_Col.default, {
+      key: i,
       lg: 3,
       md: 4
     }, _react.default.createElement(_movieCard.MovieCard, {
@@ -41151,8 +41152,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Favorite Movies: ")), _react.default.createElement("div", {
         className: "favorite"
-      }, !favoriteMoviesObject ? null : favoriteMoviesObject.map(function (movieObject) {
+      }, !favoriteMoviesObject ? null : favoriteMoviesObject.map(function (movieObject, i) {
         return _react.default.createElement(_Card.default, {
+          key: i,
           className: "favorite-movies"
         }, _react.default.createElement(_Card.default.Img, {
           className: "favorite-movie-thumbnail",
@@ -41748,7 +41750,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60382" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49717" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
