@@ -40828,6 +40828,9 @@ function UpdateProfileView(props) {
       errors = _useState4[0],
       setErrors = _useState4[1];
 
+  var email = props.user.Email;
+  var birthday = props.user.Birthday.split('T')[0];
+
   var setField = function setField(field, value) {
     setForm(_defineProperty({
       username: form.username,
@@ -40903,7 +40906,8 @@ function UpdateProfileView(props) {
   }, "Username"), _react.default.createElement(_Form.default.Control, {
     type: "username",
     className: "new-username",
-    placeholder: "Enter new username",
+    placeholder: localStorage.getItem('user'),
+    disabled: true,
     onChange: function onChange(e) {
       return setField('username', e.target.value);
     },
@@ -40927,7 +40931,7 @@ function UpdateProfileView(props) {
   }, "Email"), _react.default.createElement(_Form.default.Control, {
     type: "email",
     className: "new-email",
-    placeholder: "Enter new email",
+    value: email,
     onChange: function onChange(e) {
       return setField('email', e.target.value);
     },
@@ -40939,6 +40943,7 @@ function UpdateProfileView(props) {
   }, "Birthday"), _react.default.createElement(_Form.default.Control, {
     type: "date",
     className: "new-birthday",
+    value: birthday,
     onChange: function onChange(e) {
       return setField('birthday', e.target.value);
     }
@@ -41195,7 +41200,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }
       }, "CANCEL"))) : _react.default.createElement("div", {
         className: "update-profile"
-      }, _react.default.createElement(_updateProfileView.UpdateProfileView, null), _react.default.createElement(_Button.default, {
+      }, _react.default.createElement(_updateProfileView.UpdateProfileView, {
+        user: user
+      }), _react.default.createElement(_Button.default, {
         className: "cancel-update",
         variant: "danger",
         type: "button",

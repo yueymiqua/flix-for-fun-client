@@ -8,6 +8,8 @@ import './update-profile-view.scss';
 export function UpdateProfileView(props) {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
+    let email = props.user.Email;
+    let birthday = (props.user.Birthday.split('T'))[0];
 
     const setField = (field, value) => {
         setForm({
@@ -85,7 +87,7 @@ export function UpdateProfileView(props) {
         <h1 className="new-info-span">Enter New Profile Information</h1>
         <Form.Group>
             <Form.Label className="update-label">Username</Form.Label>
-            <Form.Control type="username" className="new-username" placeholder="Enter new username" onChange={e => setField('username', e.target.value)} isInvalid={!!errors.username}/>
+            <Form.Control type="username" className="new-username" placeholder={localStorage.getItem('user')} disabled onChange={e => setField('username', e.target.value)} isInvalid={!!errors.username}/>
             <Form.Control.Feedback type='invalid'>
             { errors.username }
             </Form.Control.Feedback>
@@ -99,14 +101,14 @@ export function UpdateProfileView(props) {
         </Form.Group>
         <Form.Group>
             <Form.Label className="update-label">Email</Form.Label>
-            <Form.Control type="email" className="new-email" placeholder="Enter new email" onChange={e => setField('email', e.target.value)} isInvalid={!!errors.email}/>
+            <Form.Control type="email" className="new-email" value={email} onChange={e => setField('email', e.target.value)} isInvalid={!!errors.email}/>
             <Form.Control.Feedback type='invalid'>
             { errors.email }
             </Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
             <Form.Label className="update-label">Birthday</Form.Label>
-            <Form.Control type="date" className="new-birthday" onChange={e => setField('birthday', e.target.value)}/>
+            <Form.Control type="date" className="new-birthday" value={birthday} onChange={e => setField('birthday', e.target.value)}/>
         </Form.Group>
         <Button variant="success" type="button" onClick={onHandleChange}>Update</Button>
     </Form>

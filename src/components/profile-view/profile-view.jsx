@@ -153,7 +153,7 @@ class ProfileView extends React.Component {
         )
           
         : <div className="update-profile">
-            <UpdateProfileView/>
+            <UpdateProfileView user={user} />
             <Button className="cancel-update" variant="danger" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
           </div>
         }
