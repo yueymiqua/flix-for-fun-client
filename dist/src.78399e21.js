@@ -40816,8 +40816,6 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function UpdateProfileView(props) {
-  var _this = this;
-
   var _useState = (0, _react.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       form = _useState2[0],
@@ -40833,13 +40831,11 @@ function UpdateProfileView(props) {
 
   var setField = function setField(field, value) {
     setForm(_defineProperty({
-      username: form.username,
       password: form.password,
       email: form.email,
       birthday: form.birthday
     }, field, value));
     if (!!errors[field]) setErrors(_defineProperty({
-      username: errors.username,
       password: errors.password,
       email: errors.email,
       birthday: errors.birthday
@@ -40847,12 +40843,9 @@ function UpdateProfileView(props) {
   };
 
   var findFormErrors = function findFormErrors() {
-    var username = form.username,
-        password = form.password,
+    var password = form.password,
         email = form.email;
-    var newErrors = []; // Validating username
-
-    if (!username || username === '') newErrors.username = 'Username not be empty';else if (username.length < 5) newErrors.username = 'Username must be more than 5 characters';else if (username.length > 30) newErrors.username = 'Username be less than 30 characters'; // Validating password
+    var newErrors = []; // Validating password
 
     if (!password || password === '') newErrors.password = 'Password must not be empty';else if (password.length < 5) newErrors.password = 'Password must be more than 5 characters';else if (password.length > 30) newErrors.password = 'Password must be less than 30 characters'; // Validating email
 
@@ -40876,22 +40869,13 @@ function UpdateProfileView(props) {
           Authorization: "Bearer ".concat(token)
         },
         data: {
-          Username: form.username,
+          Username: username,
           Password: form.password,
           Email: form.email,
           Birthday: form.birthday
         }
       }).then(function (res) {
-        _this.setState({
-          Username: res.data.Username,
-          Password: res.data.Password,
-          Email: res.data.Email,
-          Birthday: res.data.Birthday
-        });
-
-        _this.changeVisibleButtons();
-
-        localStorage.setItem('user', _this.state.Username);
+        alert('Profile Successfully Updated!');
         window.location.reload();
       });
     }
@@ -40907,14 +40891,8 @@ function UpdateProfileView(props) {
     type: "username",
     className: "new-username",
     placeholder: localStorage.getItem('user'),
-    disabled: true,
-    onChange: function onChange(e) {
-      return setField('username', e.target.value);
-    },
-    isInvalid: !!errors.username
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
-    type: "invalid"
-  }, errors.username)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+    disabled: true
+  })), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
     className: "update-label"
   }, "Password"), _react.default.createElement(_Form.default.Control, {
     type: "password",
@@ -40931,7 +40909,7 @@ function UpdateProfileView(props) {
   }, "Email"), _react.default.createElement(_Form.default.Control, {
     type: "email",
     className: "new-email",
-    value: email,
+    placeholder: email,
     onChange: function onChange(e) {
       return setField('email', e.target.value);
     },
@@ -40943,7 +40921,7 @@ function UpdateProfileView(props) {
   }, "Birthday"), _react.default.createElement(_Form.default.Control, {
     type: "date",
     className: "new-birthday",
-    value: birthday,
+    placeholder: birthday,
     onChange: function onChange(e) {
       return setField('birthday', e.target.value);
     }
