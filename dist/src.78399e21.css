@@ -1,3 +1,24 @@
+.card-body {
+  background-color: #1d1d44;
+  color: #cc0066;
+}
+
+.movie-details-button {
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  text-decoration: underline;
+}
+
+.movie-title {
+  color: white;
+}
+body {
+  background-image: url("/movies wallpaper.a16d3aaf.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
 label {
   font-size: 20px;
 }
@@ -12,20 +33,23 @@ button {
 }
 
 .login-form {
+  width: 35vw;
   text-align: center;
+  margin: 0 auto;
+  background-color: #1d1d44;
 }
 
-.login-span {
-  font-size: 20px;
+.login-title, .login-label {
   color: #cc0066;
-  font-weight: 500;
 }
 .registration-form {
+  width: 35vw;
   text-align: center;
+  margin: 0 auto;
+  background-color: #1d1d44;
 }
 
-.registration-span {
-  font-size: 20px;
+.registration-label, .registration-title {
   color: #cc0066;
 }
 .movie-view {
@@ -55,11 +79,92 @@ button {
 }
 
 .value {
-  color: steelblue;
+  color: white;
+}
+
+.movie-details {
+  background: #1d1d44;
+}
+
+.add-to-favorite {
+  background-color: #cc0066;
+}
+
+.custom-button {
+  color: white;
+  background: #cc0066;
+}
+.director-view {
+  background-color: #1d1d44;
+  color: #1d1d44;
+}
+.genre-view {
+  background-color: #1d1d44;
+  color: #1d1d44;
+}
+.update-label {
+  color: white;
 }
 .remove-movie {
   padding: 2px;
   font-size: 10px;
+}
+
+.favorite {
+  color: white;
+}
+
+.favorite-movie-thumbnail {
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.favorite-movie-title {
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.favorite-movies, .profile-details, .update-profile {
+  margin: 0 auto;
+  text-align: center;
+  background-color: #1d1d44;
+  width: 20vw;
+}
+
+.discover-movies {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.new-info-span {
+  color: #cc0066;
+  font-size: 20px;
+}
+
+.label, .value, .remove-movie {
+  font-size: 17px;
+}
+.nav-link {
+  display: inline-block;
+  background-color: #cc0066;
+}
+
+.view-profile-button {
+  background-color: #cc0066;
+}
+
+.custom-button {
+  color: white;
+  background: #cc0066;
+}
+
+.inverse-custom-button {
+  color: #cc0066;
+  background: white;
 }
 .app-container {
   color: steelblue;

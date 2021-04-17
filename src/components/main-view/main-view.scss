@@ -1,0 +1,20 @@
+@import './flix-for-fun-styles.scss';
+
+.nav-link {
+    display: inline-block;
+    background-color: $secondary-color;
+}
+
+.view-profile-button {
+    background-color: $secondary-color;
+}
+
+.custom-button {
+    color: white;
+    background: $secondary-color;
+}
+
+.inverse-custom-button {
+    color:$secondary-color;
+    background: white;
+}

@@ -1,4 +1,10 @@
-$secondary-color: #cc0066;
+@import '../main-view/flix-for-fun-styles.scss';
+
+body {
+    background-image: url("../../../IMG/movies\ wallpaper.jpg");
+    background-position:top;
+    background-size: cover;
+}
 
 label {
     font-size: 20px;
@@ -14,11 +20,12 @@ button {
 }
 
 .login-form {
+    width: 35vw;
     text-align: center;
+    margin: 0 auto;
+    background-color: $primary-color;
 }
 
-.login-span {
-    font-size: 20px;
+.login-title, .login-label {
     color: $secondary-color;
-    font-weight: 500;
 }

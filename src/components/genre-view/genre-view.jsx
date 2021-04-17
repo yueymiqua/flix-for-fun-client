@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 
 import { Link } from 'react-router-dom';
+import './genre-view.scss';
 
 export class GenreView extends React.Component{
 
@@ -26,9 +27,16 @@ export class GenreView extends React.Component{
                   <span className="value">{genre.Description}</span>
                 </div>        
                 <Link to={`/`}>
-                  <Button variant="primary" type="button">Back to Movies</Button> 
+                  <Button variant="default" className="inverse-custom-button" type="button">Back to Movies</Button> 
                 </Link>
             </div>
         )
     }
 }
+
+GenreView.propTypes = {
+  genre: PropTypes.shape({
+    Name: PropTypes.string,
+    Description: PropTypes.string
+  }),
+};

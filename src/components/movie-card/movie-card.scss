@@ -1,10 +1,17 @@
-// .movie-card {
-//     font-size: 25px;
-//     margin: 15px;
-//     background-color: beige;
-//     max-width: 25vw;
-//     cursor: pointer;
-//     border-color: midnightblue;
-//     border-style: double;
-//     margin: 0 auto;
-// }
+@import '../main-view/flix-for-fun-styles.scss';
+
+.card-body {
+    background-color: $primary-color;
+    color: $secondary-color;
+}
+
+.movie-details-button {
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+    text-decoration: underline;
+}
+
+.movie-title {
+    color: white;
+}

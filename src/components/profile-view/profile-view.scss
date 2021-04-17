@@ -1,4 +1,45 @@
+@import '../main-view/flix-for-fun-styles.scss';
+
 .remove-movie {
     padding: 2px;
     font-size: 10px;
+}
+
+.favorite {
+    color: white
+}
+
+.favorite-movie-thumbnail{
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.favorite-movie-title{
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.favorite-movies, .profile-details, .update-profile{
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(29, 29, 68);
+    width: 20vw;
+}
+
+.discover-movies {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.new-info-span {
+    color: $secondary-color;
+    font-size: 20px;
+}
+
+.label, .value, .remove-movie {
+    font-size: 17px;
 }
