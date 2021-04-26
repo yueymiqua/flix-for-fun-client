@@ -53,8 +53,10 @@ export function LoginView(props) {
         Password: form.password
       }).then(response => {
         const data = response.data;
+        console.log(data);
         props.onLoggedIn(data);
       }).catch(error => {
+        console.log(error)
         console.log('User not found.')
         alert('Incorrect username/password - Please try again!')
       })

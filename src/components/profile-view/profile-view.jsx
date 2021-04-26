@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { UpdateProfileView } from '../update-profile-view/update-profile-view';
+import UpdateProfileView from '../update-profile-view/update-profile-view';
 
 import './profile-view.scss';
 
@@ -82,18 +82,12 @@ class ProfileView extends React.Component {
     })
   }
   
-  matchMovieWithFavoritedMovieId(mId){
-    if(!mId) return;
+  matchMovieWithFavoritedMovieId(favoriteMovieIds){
+    if(favoriteMovieIds.length === 0) return;
     let { movies } = this.props;
-    let array =[];
-    mId.map(movieId => {
-      movies.map(movie => {
-        if(movie._id == movieId) {
-          array.push(movie);
-        }
-      })
-    });
-    return array;
+    return favoriteMovieIds.map(movieId => movies.find(movie => {
+      return movie._id == movieId
+    }))
   }
 
   render(){
@@ -103,7 +97,7 @@ class ProfileView extends React.Component {
     let { showConfirmDeleteButton } = this.state;
     
     if(!user) return null;
-    let favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(user.FavoriteMovies);
+    let favoriteMoviesObject = this.matchMovieWithFavoritedMovieId(this.props.favoriteMovies);
 
     // Removing T00:00:00.000Z from the Birth and death date strings
     let birthdayFields = user.Birthday.split('T');
@@ -153,7 +147,7 @@ class ProfileView extends React.Component {
         )
           
         : <div className="update-profile">
-            <UpdateProfileView user={user} />
+            <UpdateProfileView />
             <Button className="cancel-update" variant="danger" type="button" onClick={() => this.notUpdateInfo()}>Cancel</Button>            
           </div>
         }
@@ -170,7 +164,8 @@ class ProfileView extends React.Component {
 let mapStateToProps = state => {
   return { 
     movies: state.movies,
-    user: state.user
+    user: state.user,
+    favoriteMovies: state.favoriteMovies
   };
 }
 

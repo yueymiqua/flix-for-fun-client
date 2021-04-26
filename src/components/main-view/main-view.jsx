@@ -6,10 +6,10 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { setMovies, setUser } from '../../actions/actions';
+import { setMovies, setUser, setFavoriteMovies } from '../../actions/actions';
 
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
@@ -30,25 +30,22 @@ class MainView extends React.Component {
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-          user: localStorage.getItem('user')
-      })
+    if(accessToken) {
+      this.getUser(accessToken);
+      this.getMovies(accessToken);
     }
-    this.getMovies(accessToken);
-    this.getUser(accessToken);
   }
 
   // When a user successfully logs in, this function is invoked and updates the state of the 'user' property to that particular user
   onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-        user: authData.user.Username
-    });
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
+    const { user, token } = authData;
+    const { FavoriteMovies, ...userDetails } = user;
+    this.props.setUser(userDetails);
+    this.props.setFavoriteMovies(FavoriteMovies);
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(userDetails));
     this.getMovies(authData.token);
-    window.location.reload();
+    // window.location.reload();
   }
 
   // Below method is called when user logs in successfully, AND when the page is refreshed(called from componentDidMount)
@@ -63,14 +60,22 @@ class MainView extends React.Component {
   }
 
   getUser(token) {
-    let username = localStorage.getItem('user');
-    axios.get(`https://flix-for-fun.herokuapp.com/users/${username}`, {
-      headers: { Authorization: `Bearer ${token}`}
-    }).then(response => {
-      this.props.setUser(response.data);
-    }).catch(function(error) {
-      console.log(error);
-    });
+    const userString = localStorage.getItem('user');
+      
+    if(userString) {
+      const user = JSON.parse(userString);
+      let username = user.Username;
+
+      axios.get(`https://flix-for-fun.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}`}
+      }).then(response => {
+        const { FavoriteMovies, ...userDetails } = response.data;
+        this.props.setUser(userDetails);
+        this.props.setFavoriteMovies(FavoriteMovies);
+      }).catch(function(error) {
+        console.log(error);
+      });
+    }
   }
 
   onLogOut() {
@@ -81,78 +86,55 @@ class MainView extends React.Component {
     })
     console.log('Logout Successful')
     alert('Logged out successfully - Have a great day!')
-    window.location.href="/";
-  }
-
-  onProfileView(user){
-    let username = localStorage.getItem('user');
-    window.location.href = `/users/${username}`;
+    this.props.history.push('/')
   }
   
   render() {
-
+    console.log('re-rendering')
     let { movies } = this.props;
     let { user } = this.props;
-    let username = localStorage.getItem('user');
-    if (!movies) return <div className="main-view"/>;
+    if (!movies.length) return <div className="main-view"/>;
 
     return (
-    <Router>
       <div className="main-view">
         { user
-        ? <div>
-            
+        && <div>
             <Link to={`/`}>
               <Button variant="default" className="inverse-custom-button" type="button">Homepage</Button>
             </Link>
             <Link to={`/users/${user.Username}`}>
-              <Button variant="default" className="custom-button" type="button" onClick={(user) => this.onProfileView(user)}>View Profile</Button>
+              <Button variant="default" className="custom-button" type="button">View Profile</Button>
             </Link>
               <Button variant="default"  className="custom-button" type="button" href="https://yueymiqua.github.io/website-portfolio-master/" target="_blank">About App Creator</Button>
             <Link to={`/`}>
               <Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button>
             </Link>
           </div>
-        : null
         }
-        <Route exact path="/" render={() => {
-        // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
-          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
-          return <MoviesList movies={movies}/>
-        }}/>
-        <Row className="register justify-content-md-center">
-          <Col>
-            <Route path="/register" render={() => <RegistrationView/>}/>
-          </Col>
-        </Row>
-        <Row className="movie-detail justify-content-md-center">
-          <Col md={8}>
-            <Route path="/movies/:movieId" component={MovieView} />
-          </Col>
-        </Row>
-        <Row className="director justify-content-md-center">
-          <Col md={8}>
-            <Route path="/movies/directors/:Name" render={({match}) => {
-              if(!movies) return <div className="main-view"/>;
-              return <DirectorView director={movies.find(m => m.Director.Name === match.params.Name).Director}/>}
-            }/>
-          </Col>
-        </Row>
-        <Row className="genres justify-content-md-center">
-          <Col md={8}>
-            <Route path="/movies/genres/:Name" render={({match}) => {
-              if(!movies) return <div className="main-view"/>;
-              return <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name).Genre}/>}
-            }/>
-          </Col>
-        </Row>
-        <Row className="profile justify-content-md-center">
-          <Col md={4}>
-            <Route path={`/users/${username}`} component={ProfileView}/>
-          </Col>
-        </Row>
+        <Switch>
+          <Route exact path="/" render={() => {
+          // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
+            if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
+            return <MoviesList movies={movies}/>
+          }}/>
+          <Route path="/register" render={() => <RegistrationView/>}/>
+          <Route path='/users/:username' component={() => <ProfileView />}/>
+          <Route path="/movies/:movieId" component={() => <MovieView />} />
+          <Route path="/directors/:name" component={({match}) => {
+            if(!movies) return <div className="main-view"/>;
+            const matchingMovie = movies.find(m => m.Director.Name === match.params.name);
+            if(matchingMovie) {
+              return <DirectorView director={matchingMovie.Director}/>
+            } else {
+              return <div className="main-view"/>
+            }
+          }}/>
+          <Route path="/genres/:Name" render={({match}) => {
+            if(!movies) return <div className="main-view"/>;
+            return <GenreView genre={movies.find(m => m.Genre.Name === match.params.Name).Genre}/>}
+          }/>
+        </Switch>
       </div>
-    </Router>
     );
   }
 }
@@ -164,7 +146,7 @@ let mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+export default withRouter(connect(mapStateToProps, { setMovies, setUser, setFavoriteMovies } )(MainView));
 
 MainView.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({

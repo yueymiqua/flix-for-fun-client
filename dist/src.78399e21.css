@@ -14,9 +14,7 @@
   color: white;
 }
 body {
-  background-image: url("/movies wallpaper.a16d3aaf.jpg");
-  background-position: top;
-  background-size: cover;
+  background: black;
 }
 
 label {
@@ -39,7 +37,8 @@ button {
   background-color: #1d1d44;
 }
 
-.login-title, .login-label {
+.login-title,
+.login-label {
   color: #cc0066;
 }
 .registration-form {

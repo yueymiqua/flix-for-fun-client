@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
+import { connect } from 'react-redux'
 
 import './update-profile-view.scss';
 
-export function UpdateProfileView(props) {
+function UpdateProfileView(props) {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
     let email = props.user.Email;
@@ -46,17 +47,17 @@ export function UpdateProfileView(props) {
     const onHandleChange = (e) => {
         e.preventDefault();
         let token = localStorage.getItem('token');
-        let username = localStorage.getItem('user');
+        const { user: {Username} } = this.props.user;
         const newErrors = findFormErrors();
         if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors)
         } else { 
           axios({
           method: 'put',
-          url: `https://flix-for-fun.herokuapp.com/users/${username}`,
+          url: `https://flix-for-fun.herokuapp.com/users/${Username}`,
           headers: { Authorization: `Bearer ${token}`},
           data: {
-            Username: username,
+            Username,
             Password: form.password,
             Email: form.email,
             Birthday: form.birthday
@@ -97,3 +98,9 @@ export function UpdateProfileView(props) {
     </Form>
     )
 } 
+
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(UpdateProfileView)

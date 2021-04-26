@@ -4,6 +4,7 @@ import { createStore } from 'redux'; //importing Store from redux
 import { Provider } from 'react-redux'; // Wraps your entire app in a provider so that your Store is accessible in your entire app
 import { devToolsEnhancer } from 'redux-devtools-extension';
 import Container from 'react-bootstrap/Container';
+import {HashRouter as Router} from 'react-router-dom'
 
 import MainView from './components/main-view/main-view';
 import moviesApp from './reducers/reducers'; // importing the reducers to be used in the Store
@@ -19,7 +20,9 @@ class MyFlixApplication extends React.Component {
     return (
       <Provider store={store}>
         <Container>
-          <MainView/>
+          <Router hashType="slash">
+            <MainView/>
+          </Router>
         </Container>
       </Provider>
     );

@@ -2,6 +2,7 @@
 export const SET_MOVIES = 'SET_MOVIES';
 export const SET_FILTER = 'SET_FILTER';
 export const SET_USER = 'SET_USER';
+export const SET_FAVORITE_MOVIES = 'SET_FAVORITE_MOVIES'
 
 // action creators that will be called by store
 export function setMovies(value) {
@@ -23,4 +24,11 @@ export function setUser(value) {
     type: SET_USER,
     value
   };
+}
+
+export function setFavoriteMovies(value) {
+  return {
+    type: SET_FAVORITE_MOVIES,
+    value
+  }
 }
