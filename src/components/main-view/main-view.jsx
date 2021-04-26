@@ -108,7 +108,7 @@ class MainView extends React.Component {
             <Link to={`/users/${user.Username}`}>
               <Button variant="default" className="custom-button" type="button" onClick={(user) => this.onProfileView(user)}>View Profile</Button>
             </Link>
-              <Button variant="default"  className="custom-button" type="button" href="https://yueymiqua.github.io/website-portfolio/" target="_blank">About App Creator</Button>
+              <Button variant="default"  className="custom-button" type="button" href="https://yueymiqua.github.io/website-portfolio-master/" target="_blank">About App Creator</Button>
             <Link to={`/`}>
               <Button variant="danger" type="button" onClick={() => this.onLogOut()}>Logout</Button>
             </Link>

@@ -1,31 +1,33 @@
 @import '../main-view/flix-for-fun-styles.scss';
 
 body {
-    background-image: url("../../../IMG/movies\ wallpaper.jpg");
-    background-position:top;
-    background-size: cover;
+  background: #325288;
+  // background-image: url("../../../IMG/movies\ wallpaper.jpg");
+  // background-position:top;
+  // background-size: cover;
 }
 
 label {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 input {
-    margin: 5px;
+  margin: 5px;
 }
 
 button {
-    font-size: 20px;
-    margin: 10px;
+  font-size: 20px;
+  margin: 10px;
 }
 
 .login-form {
-    width: 35vw;
-    text-align: center;
-    margin: 0 auto;
-    background-color: $primary-color;
+  width: 35vw;
+  text-align: center;
+  margin: 0 auto;
+  background-color: $primary-color;
 }
 
-.login-title, .login-label {
-    color: $secondary-color;
+.login-title,
+.login-label {
+  color: $secondary-color;
 }
