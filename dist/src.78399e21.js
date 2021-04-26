@@ -34299,7 +34299,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"../node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
+},{"./../utils":"../node_modules/axios/lib/utils.js","./../core/settle":"../node_modules/axios/lib/core/settle.js","./../helpers/cookies":"../node_modules/axios/lib/helpers/cookies.js","./../helpers/buildURL":"../node_modules/axios/lib/helpers/buildURL.js","../core/buildFullPath":"../node_modules/axios/lib/core/buildFullPath.js","./../helpers/parseHeaders":"../node_modules/axios/lib/helpers/parseHeaders.js","./../helpers/isURLSameOrigin":"../node_modules/axios/lib/helpers/isURLSameOrigin.js","../core/createError":"../node_modules/axios/lib/core/createError.js"}],"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -34609,7 +34609,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","process":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
+},{"./utils":"../node_modules/axios/lib/utils.js","./helpers/normalizeHeaderName":"../node_modules/axios/lib/helpers/normalizeHeaderName.js","./adapters/xhr":"../node_modules/axios/lib/adapters/xhr.js","./adapters/http":"../node_modules/axios/lib/adapters/xhr.js","process":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/node_modules/process/browser.js"}],"../node_modules/axios/lib/core/dispatchRequest.js":[function(require,module,exports) {
 'use strict';
 
 var utils = require('./../utils');
@@ -39511,7 +39511,7 @@ var _actions = require("../../actions/actions");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function VisibilityFilterInput(props) {
-  return _react.default.createElement(_Form.default.Control, {
+  return /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     onChange: function onChange(e) {
       return props.setFilter(e.target.value);
     },
@@ -39710,7 +39710,7 @@ Card.Footer = CardFooter;
 Card.ImgOverlay = CardImgOverlay;
 var _default = Card;
 exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./createWithBsPrefix":"../node_modules/react-bootstrap/esm/createWithBsPrefix.js","./divWithClassName":"../node_modules/react-bootstrap/esm/divWithClassName.js","./CardContext":"../node_modules/react-bootstrap/esm/CardContext.js","./CardImg":"../node_modules/react-bootstrap/esm/CardImg.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js","./createWithBsPrefix":"../node_modules/react-bootstrap/esm/createWithBsPrefix.js","./divWithClassName":"../node_modules/react-bootstrap/esm/divWithClassName.js","./CardContext":"../node_modules/react-bootstrap/esm/CardContext.js","./CardImg":"../node_modules/react-bootstrap/esm/CardImg.js"}],"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -39742,7 +39742,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -39777,12 +39777,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39852,22 +39852,22 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       // which in this case is 'MainView', as 'MainView' is what's
       // connected to your database via the movies endpoint of your API
       var movie = this.props.movie;
-      return _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Img, {
+      return /*#__PURE__*/_react.default.createElement(_Card.default, null, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath
-      }), _react.default.createElement(_Card.default.Body, {
+      }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, {
         className: "card-body"
-      }, _react.default.createElement(_Card.default.Title, {
+      }, /*#__PURE__*/_react.default.createElement(_Card.default.Title, {
         className: "movie-title"
-      }, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
+      }, movie.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movie._id)
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         className: "movie-details-button",
         variant: "link",
         onClick: function onClick() {
           return _this.onMovieCardClick();
         }
-      }, _react.default.createElement("strong", null, "See Movie Details")))));
+      }, /*#__PURE__*/_react.default.createElement("strong", null, "See Movie Details")))));
     }
   }]);
 
@@ -39897,7 +39897,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movies-list/movies-list.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39941,19 +39941,19 @@ function MoviesList(props) {
     });
   }
 
-  if (!movies) return _react.default.createElement("div", {
+  if (!movies) return /*#__PURE__*/_react.default.createElement("div", {
     className: "main-view"
   });
-  return _react.default.createElement(_Row.default, {
+  return /*#__PURE__*/_react.default.createElement(_Row.default, {
     className: "movies-list justify-content-md-center"
-  }, _react.default.createElement(_visibilityFilterInput.default, {
+  }, /*#__PURE__*/_react.default.createElement(_visibilityFilterInput.default, {
     visibilityFilter: visibilityFilter
   }), filteredMovies.map(function (m, i) {
-    return _react.default.createElement(_Col.default, {
+    return /*#__PURE__*/_react.default.createElement(_Col.default, {
       key: i,
       lg: 3,
       md: 4
-    }, _react.default.createElement(_movieCard.MovieCard, {
+    }, /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
       key: m._id,
       movie: m
     }));
@@ -39989,7 +39989,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\..\\..\\IMG\\movies wallpaper.jpg":[["movies wallpaper.a16d3aaf.jpg","../IMG/movies wallpaper.jpg"],"../IMG/movies wallpaper.jpg"],"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"./../../../IMG/movies wallpaper.jpg":[["movies wallpaper.a16d3aaf.jpg","../IMG/movies wallpaper.jpg"],"../IMG/movies wallpaper.jpg"],"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40083,40 +40083,40 @@ function LoginView(props) {
     }
   };
 
-  return _react.default.createElement(_Form.default, {
+  return /*#__PURE__*/_react.default.createElement(_Form.default, {
     className: "login-form justify-content-md-center"
-  }, _react.default.createElement("h1", {
+  }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "login-title"
-  }, "Login to Flix-For-Fun!"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, "Login to Flix-For-Fun!"), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "login-label"
-  }, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, "Username"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter username",
     onChange: function onChange(e) {
       return setField('username', e.target.value);
     },
     isInvalid: !!errors.username
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, errors.username)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "login-label"
-  }, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, "Password"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter password",
     onChange: function onChange(e) {
       return setField('password', e.target.value);
     },
     isInvalid: !!errors.password
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+  }, errors.password)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Button.default, {
     className: "custom-button",
     variant: "default",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+  }, "Submit"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
-  }, _react.default.createElement(_Button.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Button.default, {
     className: "inverse-custom-button",
     variant: "default",
     type: "button"
@@ -40127,7 +40127,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40229,58 +40229,58 @@ function RegistrationView(props) {
     }
   };
 
-  return _react.default.createElement(_Form.default, {
+  return /*#__PURE__*/_react.default.createElement(_Form.default, {
     className: "registration-form justify-content-md-center"
-  }, _react.default.createElement("h1", {
+  }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "registration-title"
-  }, "Sign-up For An Account"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, "Sign-up For An Account"), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "registration-label"
-  }, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, "Username"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "text",
     placeholder: "Enter new username",
     onChange: function onChange(e) {
       return setField('username', e.target.value);
     },
     isInvalid: !!errors.username
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.username)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, errors.username)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "registration-label"
-  }, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, "Password"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "password",
     placeholder: "Enter new password",
     onChange: function onChange(e) {
       return setField('password', e.target.value);
     },
     isInvalid: !!errors.password
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.password)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, errors.password)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "registration-label"
-  }, "Email"), _react.default.createElement(_Form.default.Control, {
+  }, "Email"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "email",
     placeholder: "Enter new email",
     onChange: function onChange(e) {
       return setField('email', e.target.value);
     },
     isInvalid: !!errors.email
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.email)), _react.default.createElement("br", null), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, errors.email)), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "registration-label"
-  }, "Birthday"), _react.default.createElement(_Form.default.Control, {
+  }, "Birthday"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "date",
     onChange: function onChange(e) {
       return setField('birthday', e.target.value);
     }
-  })), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+  })), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Button.default, {
     className: "custom-button",
     variant: "default",
     type: "submit",
     onClick: handleRegister
-  }, "Register"), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+  }, "Register"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/"
-  }, _react.default.createElement(_Button.default, {
+  }, /*#__PURE__*/_react.default.createElement(_Button.default, {
     className: "inverse-custom-button",
     variant: "default",
     type: "button"
@@ -40291,7 +40291,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40432,61 +40432,61 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
           user = _this$props.user;
       var favorited = this.state.favorited;
       if (!movie) return null;
-      return _react.default.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-view"
-      }, _react.default.createElement("img", {
+      }, /*#__PURE__*/_react.default.createElement("img", {
         className: "movie-poster",
         src: movie.ImagePath
-      }), _react.default.createElement("div", {
+      }), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-details"
-      }, _react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "image-poster"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Title)), _react.default.createElement("div", {
+      }, movie.Title)), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-description"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Description: "), _react.default.createElement("span", {
+      }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Description)), _react.default.createElement("div", {
+      }, movie.Description)), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-genre"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Genre: "), _react.default.createElement("span", {
+      }, "Genre: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Genre.Name)), _react.default.createElement("div", {
+      }, movie.Genre.Name)), /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-director"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Director: "), _react.default.createElement("span", {
+      }, "Director: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Name)), !favorited ? _react.default.createElement(_Button.default, {
+      }, movie.Director.Name)), !favorited ? /*#__PURE__*/_react.default.createElement(_Button.default, {
         className: "custom-button",
         variant: "default",
         type: "button",
         onClick: function onClick(e) {
           return _this5.addToFavoriteListAndshowAlreadyAddedButton(e, movie);
         }
-      }, "Add to Favorite") : _react.default.createElement(_Button.default, {
+      }, "Add to Favorite") : /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "secondary",
         type: "button",
         onClick: function onClick(e) {
           return _this5.removeFromFavoriteListandShowAddToFavoriteButton(e, movie);
         }
-      }, "Added!"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Added!"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/directors/".concat(movie.Director.Name)
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "inverse-custom-button"
-      }, "Director Info")), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Director Info")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/genres/".concat(movie.Genre.Name)
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "inverse-custom-button"
-      }, "Genre Info")), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Genre Info")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "custom-button",
         type: "button"
@@ -40557,7 +40557,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40619,37 +40619,37 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var director = this.props.director;
       if (!director) return null;
-      return _react.default.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement("div", {
         className: "director-view"
-      }, _react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "director-name"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Name: "), _react.default.createElement("span", {
+      }, "Name: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, director.Name)), _react.default.createElement("div", {
+      }, director.Name)), /*#__PURE__*/_react.default.createElement("div", {
         className: "director-bio"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Biography: "), _react.default.createElement("span", {
+      }, "Biography: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, director.Bio)), _react.default.createElement("div", {
+      }, director.Bio)), /*#__PURE__*/_react.default.createElement("div", {
         className: "director-birth"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Birth: "), _react.default.createElement("span", {
+      }, "Birth: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, director.Birth.split('T')[0])), _react.default.createElement("div", {
+      }, director.Birth.split('T')[0])), /*#__PURE__*/_react.default.createElement("div", {
         className: "director-death"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Death: "), director.Death === null ? _react.default.createElement("span", {
+      }, "Death: "), director.Death === null ? /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }) : _react.default.createElement("span", {
+      }) : /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, director.Death.split('T')[0])), _react.default.createElement(_reactRouterDom.Link, {
+      }, director.Death.split('T')[0])), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "inverse-custom-button",
         type: "button"
@@ -40678,7 +40678,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40740,21 +40740,21 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var genre = this.props.genre;
       if (!genre) return null;
-      return _react.default.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-view"
-      }, _react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-name"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, genre.Name, " Movies")), _react.default.createElement("div", {
+      }, genre.Name, " Movies")), /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-description"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Description: "), _react.default.createElement("span", {
+      }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, genre.Description)), _react.default.createElement(_reactRouterDom.Link, {
+      }, genre.Description)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "inverse-custom-button",
         type: "button"
@@ -40777,7 +40777,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/update-profile-view/update-profile-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/update-profile-view/update-profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40881,20 +40881,20 @@ function UpdateProfileView(props) {
     }
   };
 
-  return _react.default.createElement(_Form.default, {
+  return /*#__PURE__*/_react.default.createElement(_Form.default, {
     className: "update-profile"
-  }, _react.default.createElement("h1", {
+  }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "new-info-span"
-  }, "Enter New Profile Information"), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, "Enter New Profile Information"), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "update-label"
-  }, "Username"), _react.default.createElement(_Form.default.Control, {
+  }, "Username"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "username",
     className: "new-username",
     placeholder: localStorage.getItem('user'),
     disabled: true
-  })), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  })), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "update-label"
-  }, "Password"), _react.default.createElement(_Form.default.Control, {
+  }, "Password"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "password",
     className: "new-password",
     placeholder: "Enter new password",
@@ -40902,11 +40902,11 @@ function UpdateProfileView(props) {
       return setField('password', e.target.value);
     },
     isInvalid: !!errors.password
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.password)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, errors.password)), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "update-label"
-  }, "Email"), _react.default.createElement(_Form.default.Control, {
+  }, "Email"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "email",
     className: "new-email",
     placeholder: email,
@@ -40914,18 +40914,18 @@ function UpdateProfileView(props) {
       return setField('email', e.target.value);
     },
     isInvalid: !!errors.email
-  }), _react.default.createElement(_Form.default.Control.Feedback, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
     type: "invalid"
-  }, errors.email)), _react.default.createElement(_Form.default.Group, null, _react.default.createElement(_Form.default.Label, {
+  }, errors.email)), /*#__PURE__*/_react.default.createElement(_Form.default.Group, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, {
     className: "update-label"
-  }, "Birthday"), _react.default.createElement(_Form.default.Control, {
+  }, "Birthday"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "date",
     className: "new-birthday",
     placeholder: birthday,
     onChange: function onChange(e) {
       return setField('birthday', e.target.value);
     }
-  })), _react.default.createElement(_Button.default, {
+  })), /*#__PURE__*/_react.default.createElement(_Button.default, {
     variant: "success",
     type: "button",
     onClick: onHandleChange
@@ -40936,7 +40936,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41109,42 +41109,42 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 
       var birthdayFields = user.Birthday.split('T');
       var newBirth = birthdayFields[0];
-      return _react.default.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement("div", {
         className: "profile"
-      }, !showUpdateButton ? _react.default.createElement("div", null, _react.default.createElement("div", {
+      }, !showUpdateButton ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
         className: "profile-details"
-      }, _react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "profile-username"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Username: "), _react.default.createElement("span", {
+      }, "Username: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, user.Username)), _react.default.createElement("div", {
+      }, user.Username)), /*#__PURE__*/_react.default.createElement("div", {
         className: "profile-email"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Email: "), _react.default.createElement("span", {
+      }, "Email: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, user.Email)), _react.default.createElement("div", {
+      }, user.Email)), /*#__PURE__*/_react.default.createElement("div", {
         className: "profile-birthday"
-      }, _react.default.createElement("span", {
+      }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Birthday: "), _react.default.createElement("span", {
+      }, "Birthday: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, newBirth)), _react.default.createElement("span", {
+      }, newBirth)), /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
-      }, "Favorite Movies: ")), _react.default.createElement("div", {
+      }, "Favorite Movies: ")), /*#__PURE__*/_react.default.createElement("div", {
         className: "favorite"
       }, !favoriteMoviesObject ? null : favoriteMoviesObject.map(function (movieObject, i) {
-        return _react.default.createElement(_Card.default, {
+        return /*#__PURE__*/_react.default.createElement(_Card.default, {
           key: i,
           className: "favorite-movies"
-        }, _react.default.createElement(_Card.default.Img, {
+        }, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
           className: "favorite-movie-thumbnail",
           src: "".concat(movieObject.ImagePath)
-        }), _react.default.createElement(_Card.default.Title, {
+        }), /*#__PURE__*/_react.default.createElement(_Card.default.Title, {
           className: "favorite-movie-title"
-        }, movieObject.Title), _react.default.createElement(_Button.default, {
+        }, movieObject.Title), /*#__PURE__*/_react.default.createElement(_Button.default, {
           className: "remove-movie",
           variant: "danger",
           type: "button",
@@ -41152,46 +41152,46 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
             return _this2.onHandleRemoveFavoriteMovie(e, movieObject._id);
           }
         }, "Remove from Favorites"));
-      })), _react.default.createElement(_Button.default, {
+      })), /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "custom-button",
         onClick: function onClick() {
           return _this2.changeVisibleButtons();
         }
-      }, "Update Information"), !showConfirmDeleteButton ? _react.default.createElement(_Button.default, {
+      }, "Update Information"), !showConfirmDeleteButton ? /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "danger",
         type: "button",
         onClick: function onClick() {
           return _this2.changeDeleteButtonVisibility();
         }
-      }, "Delete Profile") : _react.default.createElement("div", null, _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
+      }, "Delete Profile") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "danger",
         type: "button",
         onClick: function onClick(e) {
           return _this2.onHandleDelete(e);
         }
-      }, "CONFIRM DELETE"), _react.default.createElement(_Button.default, {
+      }, "CONFIRM DELETE"), /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "primary",
         type: "button",
         onClick: function onClick() {
           return _this2.cancelDelete();
         }
-      }, "CANCEL"))) : _react.default.createElement("div", {
+      }, "CANCEL"))) : /*#__PURE__*/_react.default.createElement("div", {
         className: "update-profile"
-      }, _react.default.createElement(_updateProfileView.UpdateProfileView, {
+      }, /*#__PURE__*/_react.default.createElement(_updateProfileView.UpdateProfileView, {
         user: user
-      }), _react.default.createElement(_Button.default, {
+      }), /*#__PURE__*/_react.default.createElement(_Button.default, {
         className: "cancel-update",
         variant: "danger",
         type: "button",
         onClick: function onClick() {
           return _this2.notUpdateInfo();
         }
-      }, "Cancel")), _react.default.createElement("div", {
+      }, "Cancel")), /*#__PURE__*/_react.default.createElement("div", {
         className: "discover-movies"
-      }, _react.default.createElement(_reactRouterDom.Link, {
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         className: "custom-button",
         variant: "default",
         type: "button"
@@ -41247,7 +41247,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41414,107 +41414,107 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var movies = this.props.movies;
       var user = this.props.user;
       var username = localStorage.getItem('user');
-      if (!movies) return _react.default.createElement("div", {
+      if (!movies) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
-      }, user ? _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+      }, user ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "inverse-custom-button",
         type: "button"
-      }, "Homepage")), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Homepage")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/users/".concat(user.Username)
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "custom-button",
         type: "button",
         onClick: function onClick(user) {
           return _this4.onProfileView(user);
         }
-      }, "View Profile")), _react.default.createElement(_Button.default, {
+      }, "View Profile")), /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "default",
         className: "custom-button",
         type: "button",
         href: "https://yueymiqua.github.io/website-portfolio/",
         target: "_blank"
-      }, "About App Creator"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "About App Creator"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "danger",
         type: "button",
         onClick: function onClick() {
           return _this4.onLogOut();
         }
-      }, "Logout"))) : null, _react.default.createElement(_reactRouterDom.Route, {
+      }, "Logout"))) : null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
           // If no user, the login view is rendered. If there is a user logged in, the user details are passed as a prop to LoginView
-          if (!user) return _react.default.createElement(_loginView.LoginView, {
+          if (!user) return /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
               return _this4.onLoggedIn(user);
             }
           });
-          return _react.default.createElement(_moviesList.default, {
+          return /*#__PURE__*/_react.default.createElement(_moviesList.default, {
             movies: movies
           });
         }
-      }), _react.default.createElement(_Row.default, {
+      }), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "register justify-content-md-center"
-      }, _react.default.createElement(_Col.default, null, _react.default.createElement(_reactRouterDom.Route, {
+      }, /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/register",
         render: function render() {
-          return _react.default.createElement(_registrationView.RegistrationView, null);
+          return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, null);
         }
-      }))), _react.default.createElement(_Row.default, {
+      }))), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "movie-detail justify-content-md-center"
-      }, _react.default.createElement(_Col.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
-      }, _react.default.createElement(_reactRouterDom.Route, {
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",
         component: _movieView.default
-      }))), _react.default.createElement(_Row.default, {
+      }))), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "director justify-content-md-center"
-      }, _react.default.createElement(_Col.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
-      }, _react.default.createElement(_reactRouterDom.Route, {
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/directors/:Name",
         render: function render(_ref) {
           var match = _ref.match;
-          if (!movies) return _react.default.createElement("div", {
+          if (!movies) return /*#__PURE__*/_react.default.createElement("div", {
             className: "main-view"
           });
-          return _react.default.createElement(_directorView.DirectorView, {
+          return /*#__PURE__*/_react.default.createElement(_directorView.DirectorView, {
             director: movies.find(function (m) {
               return m.Director.Name === match.params.Name;
             }).Director
           });
         }
-      }))), _react.default.createElement(_Row.default, {
+      }))), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "genres justify-content-md-center"
-      }, _react.default.createElement(_Col.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
-      }, _react.default.createElement(_reactRouterDom.Route, {
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/genres/:Name",
         render: function render(_ref2) {
           var match = _ref2.match;
-          if (!movies) return _react.default.createElement("div", {
+          if (!movies) return /*#__PURE__*/_react.default.createElement("div", {
             className: "main-view"
           });
-          return _react.default.createElement(_genreView.GenreView, {
+          return /*#__PURE__*/_react.default.createElement(_genreView.GenreView, {
             genre: movies.find(function (m) {
               return m.Genre.Name === match.params.Name;
             }).Genre
           });
         }
-      }))), _react.default.createElement(_Row.default, {
+      }))), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "profile justify-content-md-center"
-      }, _react.default.createElement(_Col.default, {
+      }, /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 4
-      }, _react.default.createElement(_reactRouterDom.Route, {
+      }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/users/".concat(username),
         component: _profileView.default
       })))));
@@ -41633,7 +41633,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.jsx":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -41694,9 +41694,9 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _createClass(MyFlixApplication, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement(_reactRedux.Provider, {
+      return /*#__PURE__*/_react.default.createElement(_reactRedux.Provider, {
         store: store
-      }, _react.default.createElement(_Container.default, null, _react.default.createElement(_mainView.default, null)));
+      }, /*#__PURE__*/_react.default.createElement(_Container.default, null, /*#__PURE__*/_react.default.createElement(_mainView.default, null)));
     }
   }]);
 
@@ -41707,7 +41707,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
 var container = document.getElementsByClassName('app-container')[0]; // Tell React to render our app in the root DOM element
 
 _reactDom.default.render(_react.default.createElement(MyFlixApplication), container);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","redux-devtools-extension":"../node_modules/redux-devtools-extension/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./reducers/reducers":"reducers/reducers.js","./index.scss":"index.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","redux":"../node_modules/redux/es/redux.js","react-redux":"../node_modules/react-redux/es/index.js","redux-devtools-extension":"../node_modules/redux-devtools-extension/index.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./reducers/reducers":"reducers/reducers.js","./index.scss":"index.scss"}],"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -41735,7 +41735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49717" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61814" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -41911,5 +41911,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
+},{}]},{},["../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
 //# sourceMappingURL=/src.78399e21.js.map
