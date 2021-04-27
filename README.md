@@ -14,6 +14,10 @@ My experience with using Redux in this project has been a mix as I have encounte
 
 ## Ways to get the Project Running:
 
+### Method 1 - visit https://flix-for-fun-app.netlify.app/ (website hosted on Netlify)
+For a test login, you may use Username: johndoe Password: johndoe
+
+### Method 2 - Clone repo and run it locally
 1. Visit the the github repository "https://github.com/yueymiqua/flix-for-fun-client"
 2. Create a copy of the repository and put it on your local desktop.
 3. Navigate to the root directory of the project and install all required dependancies by typing "npm install" on the CLI
