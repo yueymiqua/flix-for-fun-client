@@ -39989,7 +39989,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./../../../IMG/movies wallpaper.jpg":[["movies wallpaper.a16d3aaf.jpg","../IMG/movies wallpaper.jpg"],"../IMG/movies wallpaper.jpg"],"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41438,7 +41438,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         variant: "default",
         className: "custom-button",
         type: "button",
-        href: "https://yueymiqua.github.io/website-portfolio/",
+        href: "https://yueymiqua.github.io/website-portfolio-master/",
         target: "_blank"
       }, "About App Creator"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -41735,7 +41735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61947" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49443" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
